@@ -16,5 +16,30 @@ namespace Toast.Controllers
 
             return View();
         }
+
+        // GET: AhTrend
+        public ActionResult AhTrend(string memberId)
+        {
+            ViewBag.Title = "Toasty";
+
+            return View();
+        }
+
+        // GET: Meetings
+        public ActionResult Meetings(string memberId)
+        {
+            ViewBag.Title = "Toasty";
+
+            return View();
+        }
+
+        // GET: Summary
+        public ActionResult Summary(string memberId)
+        {
+            ViewBag.Title = "Toasty";
+
+            return View();
+        }
+
     }
 }

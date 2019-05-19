@@ -3,16 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Toast.Models;
 
 namespace Toast.Controllers
 {
     public class HomeController : Controller
     {
+        private DBStoredProcedure dbPROC = new DBStoredProcedure();
+
         public ActionResult Index()
         {
             if (Request.IsAuthenticated)
             {
-                // Go to the User Profile
+                var memberIsAdmin = dbPROC.GetMemberAccountType();
+
+                if (memberIsAdmin)
+                {
+                    return RedirectToAction("Index", "Admin");
+                }
+
+                // Go to the Member Profile
                 return RedirectToAction("Index", "Profile");
             }
 

@@ -1,6 +1,7 @@
 ﻿@{
     Layout = "~/Views/Shared/_Layout_Profile.cshtml";
     ViewBag.Title = "Dashboard";
+
 }
 
 <div class="content">
@@ -15,6 +16,29 @@
             </p>
         </div>
     </div>
+
+    <div class="row">
+        <div class="col-sm-4">
+            <span>Graph 1</span>
+        </div>
+        <div class="col-sm-4">
+            <span>Graph 2</span>
+        </div>
+        <div class="col-sm-4">
+            <span>Graph 3</span>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-sm-offset-2 col-sm-3">
+            <span>Graph 4</span>
+        </div>
+        <div class="col-sm-offset-1 col-sm-3">
+            <span>Graph 5</span>
+        </div>
+    </div>
+
+
     <div class="row">
         <div class="row">
             <div class="col-md-6">
@@ -410,7 +434,7 @@
             var chartIncomeData = [
                 {
                     label: "line",
-                    data: [[1, 10], [2, 26], [3, 16], [4, 36], [5, 32], [6, 51]]
+                    data: [[1, 10], [2, 26], [3, 16], [4, 36], [5, 32], [6, 51]] // jsData[0]
                 }
             ];
 

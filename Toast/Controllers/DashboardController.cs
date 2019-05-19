@@ -12,6 +12,12 @@ namespace Toast.Controllers
         // GET: Dashboard
         public ActionResult Index()
         {
+            // example js datadictionary
+            //var jsData =
+            //{
+            //    FirstName = "Javier",
+            //    LastName = "Espinosa",
+            //};
             return View();
         }
     }

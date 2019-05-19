@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="8120947d3e8e4985a3cbe83f6e914379" Name="Diagram1">
+        <EntityTypeShape EntityType="Toast_DevModel.Area" Width="1.5" PointX="22.5" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.AspNetUserExceptionLog" Width="1.5" PointX="13" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.AspNetUser" Width="1.5" PointX="10.75" PointY="12.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Club" Width="1.5" PointX="24.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ClubEntityMap" Width="1.5" PointX="16" PointY="4.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ClubPhoenix_TBD_" Width="1.5" PointX="7.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ClubPosition" Width="1.5" PointX="9.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Clubs_TBD_" Width="1.5" PointX="13.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.CounterRecord" Width="1.5" PointX="5.25" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.District" Width="1.5" PointX="18" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Division" Width="1.5" PointX="20.25" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.EducationAward" Width="1.5" PointX="10.75" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Goal" Width="1.5" PointX="27" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.GrammarianRecord" Width="1.5" PointX="5.25" PointY="10.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.GuestAttendance" Width="1.5" PointX="5.25" PointY="13.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListCity" Width="1.5" PointX="13.75" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListCountry" Width="1.5" PointX="9.25" PointY="28.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListDegree" Width="1.5" PointX="8" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListMajor" Width="1.5" PointX="5.75" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListSkill" Width="1.5" PointX="10.75" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListState" Width="1.5" PointX="11.5" PointY="28" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListUniversity" Width="1.5" PointX="7.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.MapConnectionUser" Width="1.5" PointX="15.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.MapUser" Width="1.5" PointX="15.75" PointY="9.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Meeting" Width="1.5" PointX="3" PointY="5" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.MeetingAward" Width="1.5" PointX="8.25" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Member" Width="1.5" PointX="0.75" PointY="7.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.MemberAward" Width="1.5" PointX="3" PointY="1.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.NotificationExceptionLog" Width="1.5" PointX="13" PointY="10.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.NotificationsUser" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.NotificationsUserType" Width="1.5" PointX="5.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.OfficerRole" Width="1.5" PointX="3" PointY="19.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileAwardsMap" Width="1.5" PointX="13" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileBusinessPosition" Width="1.5" PointX="13.75" PointY="30.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileComment" Width="1.5" PointX="13" PointY="16.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileExternalNotification" Width="1.5" PointX="17.75" PointY="6.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileExternalNotificationsType" Width="1.5" PointX="17.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileMessage" Width="1.5" PointX="18.75" PointY="13.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileMessageSession" Width="1.5" PointX="18.75" PointY="17.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileMessageUserSession" Width="1.5" PointX="19.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfilePost" Width="1.5" PointX="13" PointY="20.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Region" Width="1.5" PointX="15.75" PointY="1.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.TableTopicsCategory" Width="1.5" PointX="5.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.TestProfileMap" Width="1.5" PointX="19.75" PointY="7.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.TestProfile" Width="1.5" PointX="7.75" PointY="19.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.Test" Width="1.5" PointX="20.75" PointY="10.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.TestType" Width="1.5" PointX="20.75" PointY="15.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.AspNetRole" Width="1.5" PointX="20.75" PointY="18.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.AspNetUserLoginLog" Width="1.5" PointX="13" PointY="24.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.AspNetUserRole" Width="1.5" PointX="0.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.AspNetUsersAttempt" Width="1.5" PointX="2.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ListDistricts_TBD_" Width="1.5" PointX="21.75" PointY="4.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.NotificationsUserMessage" Width="1.5" PointX="15.75" PointY="21.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="Toast_DevModel.ProfileMember" Width="1.5" PointX="16" PointY="13.125" IsExpanded="true" />
+        <AssociationConnector Association="Toast_DevModel.FK__Area__DivisionID__43D61337" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Club__AreaID__44CA3770" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_AspNetUserExceptionLogs_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_AspNetUserLoginLogs_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_NotificationExceptionLogs_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ProfileAwardsMap_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ProfileComments_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ProfileMember_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ProfilePosts_AspNetUsers" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Goal__ClubID__489AC854" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ClubEntityMap_Clubs_TBD_" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ProfileMember_Clubs_TBD_" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__CounterRe__Meeti__45BE5BA9" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__District__Region__46B27FE2" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Division__Distri__47A6A41B" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Grammaria__Meeti__498EEC8D" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__GuestAtte__Meeti__4A8310C6" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ListCities_ListStates" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ProfileMember_ListCities" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ListStates_ListCountries" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ListDegrees_ListMajors" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__AhCount__4B7734FF" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__BestEva__4C6B5938" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__BestFun__4D5F7D71" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__BestSpe__4E53A1AA" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__BestTbl__4F47C5E3" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Evaluat__503BEA1C" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Evaluat__51300E55" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Evaluat__5224328E" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__GenEval__531856C7" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Grammar__540C7B00" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Humoris__55009F39" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__MostEnt__55F4C372" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__MostImp__56E8E7AB" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Speaker__57DD0BE4" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Speaker__58D1301D" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Speaker__59C55456" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__TblTopi__5AB9788F" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__TblTopi__5BAD9CC8" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__TblTopi__5CA1C101" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__TblTopi__5D95E53A" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__TblTopi__5E8A0973" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__Meeting__Toastma__5F7E2DAC" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__MeetingAw__Meeti__607251E5" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__MeetingAward__ID__6166761E" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__MemberAward__ID__625A9A57" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK__OfficerRole__ID__634EBE90" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_NotificationsUser_NotificationsUserType" ManuallyRouted="false" />
+        <AssociationConnector Association="Toast_DevModel.FK_ProfileMember_ProfileBusinessPosition" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

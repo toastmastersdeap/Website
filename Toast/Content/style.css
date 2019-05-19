@@ -56,7 +56,7 @@
 }
 
 .hmodal-success h4.modal-title {
-    color: #62cb31
+    color: #772432
 }
 
 .hmodal-danger h4.modal-title {
@@ -97,7 +97,7 @@
 }
 
 .full .progress-bar-success {
-    background-color: #62cb31;
+    background-color: #772432;
     border-right: 4px solid #58b62c
 }
 
@@ -121,7 +121,7 @@
 }
 
 .badge.badge-success {
-    background-color: #62cb31
+    background-color: #772432
 }
 
 .badge.badge-info {
@@ -177,8 +177,8 @@
 }
 
 .checkbox-success input[type="checkbox"]:checked + label::before {
-    background-color: #62cb31;
-    border-color: #62cb31
+    background-color: #772432;
+    border-color: #772432
 }
 
 .checkbox-success input[type="checkbox"]:checked + label::after {
@@ -234,15 +234,15 @@
 }
 
 .radio-success input[type="radio"] + label::after {
-    background-color: #62cb31
+    background-color: #772432
 }
 
 .radio-success input[type="radio"]:checked + label::before {
-    border-color: #62cb31
+    border-color: #772432
 }
 
 .radio-success input[type="radio"]:checked + label::after {
-    background-color: #62cb31
+    background-color: #772432
 }
 
 .checkbox input:hover,
@@ -318,7 +318,7 @@
 }
 
     .spinner > div {
-        background-color: #62cb31;
+        background-color: #772432;
         height: 100%;
         width: 8px;
         display: inline-block;
@@ -497,7 +497,7 @@
     }
 
 .vertical-date small {
-    color: #62cb31;
+    color: #772432;
     font-weight: 400
 }
 
@@ -658,7 +658,7 @@
 }
 
 .btn-success.btn-outline {
-    color: #62cb31
+    color: #772432
 }
 
 .btn-info.btn-outline {
@@ -772,8 +772,8 @@
         }
 
 .btn-success {
-    background-color: #62cb31;
-    border-color: #62cb31;
+    background-color: #772432;
+    border-color: #772432;
     color: #fff
 }
 
@@ -1323,7 +1323,7 @@ a.list-group-item.active:focus {
 }
 
 .hpanel.hgreen .panel-body {
-    border-top: 2px solid #62cb31
+    border-top: 2px solid #772432
 }
 
 .hpanel.hblue .panel-body {
@@ -1355,7 +1355,7 @@ a.list-group-item.active:focus {
 }
 
 .hpanel.hbggreen .panel-body {
-    background: #62cb31;
+    background: #772432;
     color: #fff;
     border: 0
 }
@@ -2452,7 +2452,7 @@ ul.h-list {
 }
 
 .homer-notify.alert-success {
-    border-left: 6px solid #62cb31
+    border-left: 6px solid #772432
 }
 
 .homer-notify.alert-danger {
@@ -2499,7 +2499,7 @@ ul.h-list {
 
 .toast-success {
     background: #fff;
-    border-left: 6px solid #62cb31
+    border-left: 6px solid #772432
 }
 
 .toast-warning {
@@ -2521,7 +2521,7 @@ ul.h-list {
 }
 
 .toast-success .toast-progress {
-    background-color: #62cb31
+    background-color: #772432
 }
 
 .toast-warning .toast-progress {
@@ -3056,7 +3056,7 @@ ul.h-list {
 }
 
 .h-bg-green {
-    background: #62cb31
+    background: #772432
 }
 
 .h-bg-yellow {
@@ -3088,7 +3088,7 @@ ul.h-list {
 }
 
 .text-success {
-    color: #62cb31
+    color: #772432
 }
 
 .text-warning {
@@ -3451,14 +3451,22 @@ body {
 }
 
 #menu {
-    width: 180px;
+    width: 180px; /* JA: We might want to increase this */
     bottom: 0;
     float: left;
     left: 0;
     position: absolute;
     top: 62px;
-    transition: margin .4s ease 0s
+    transition: margin .4s ease 0s;
 }
+
+/* For Mobile example */
+/*@media (max-width: 328px)
+{
+    #menu {
+        width: 90px;
+    }
+}*/
 
 #wrapper {
     margin: 0 0 0 180px;
@@ -4067,7 +4075,7 @@ a {
     }
 
 .label-success {
-    background-color: #62cb31
+    background-color: #772432
 }
 
 .well {
@@ -4553,7 +4561,7 @@ body.light-skin {
     }
 
     body.light-skin .hpanel.hgreen .panel-body {
-        border-top: 2px solid #62cb31
+        border-top: 2px solid #772432
     }
 
     body.light-skin .hpanel.hblue .panel-body {
@@ -4669,13 +4677,13 @@ body.light-skin {
     border-radius: 5px;
     color: #fff;
     display: block;
-    background-color: #62cb31;
+    background-color: #772432;
     margin-left: 0
 }
 
 .landing-page .navbar-default .navbar-toggle:hover,
 .landing-page .navbar-default .navbar-toggle:focus {
-    background: #62cb31
+    background: #772432
 }
 
     .landing-page .navbar-default .navbar-toggle:hover .icon-bar,
@@ -4687,7 +4695,7 @@ body.light-skin {
 .landing-page .navbar-default .navbar-nav > .active > a:hover,
 .landing-page .navbar-default .navbar-nav > .active > a:focus {
     background-color: transparent;
-    color: #62cb31;
+    color: #772432;
     border: 0
 }
 
@@ -4696,7 +4704,7 @@ body.light-skin {
 }
 
 .landing-page .brand-desc {
-    color: #455463;
+    color: #004165;
     margin: 17px 10px 0 90px;
     width: 180px
 }
@@ -4705,7 +4713,7 @@ body.light-skin {
     font-size: 14px;
     font-weight: 600;
     padding: 15px 15px;
-    color: #455463
+    color: #004165
 }
 
 .landing-page .navbar-nav > li,
@@ -4787,7 +4795,7 @@ body.light-skin {
     }
 
 .landing-page .navy-link {
-    background: #455463;
+    background: #004165;
     color: #fff
 }
 
@@ -4800,7 +4808,7 @@ body.light-skin {
 }
 
 .landing-page .social-icon a {
-    background: #62cb31;
+    background: #772432;
     color: #fff;
     text-align: center;
     padding: 4px 8px;
@@ -4835,7 +4843,7 @@ body.light-skin {
     .landing-page .pricing-plan .pricing-price span {
         font-weight: 700;
         font-size: 30px;
-        color: #62cb31
+        color: #772432
     }
 
 .landing-page .pricing-title .label {
@@ -4849,7 +4857,7 @@ body.light-skin {
 }
 
 .landing-page li.pricing-title {
-    color: #455463;
+    color: #004165;
     padding: 25px 10px 0 10px;
     border-radius: 4px 4px 0 0;
     font-size: 22px;

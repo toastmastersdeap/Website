@@ -15,6 +15,11 @@ namespace Toast.Models
             _connectionString = ConfigurationManager.ConnectionStrings["DevConnectionString"].ConnectionString;
         }
 
+        public bool GetMemberAccountType()
+        {
+            return true;
+        }
+
 
     }
 }

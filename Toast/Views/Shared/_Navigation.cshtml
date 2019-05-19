@@ -34,7 +34,12 @@
             <a href="@Url.Action("Index", "Dashboard")"> <span class="nav-label">Dashboard</span> <span class="label label-success pull-right">v.0</span> </a>
         </li>
         <li class="@Html.IsSelected(controller: "Analytics")">
-            <a href="@Url.Action("Index", "Analytics")"> <span class="nav-label">Analytics</span><span class="label label-warning pull-right">NEW</span> </a>
+            <a href="#"> <span class="nav-label">Analytics</span><span class="fa fa-arrow"></span> </a>
+            <ul class="nav nav-second-level">
+                <li class="@Html.IsSelected(action: "ChartJs")"><a href="@Url.Action("AhTrend", "Profile")">Ah Summary</a></li>
+                <li class="@Html.IsSelected(action: "FlotCharts")"><a href="@Url.Action("Meetings", "Profile")">Last Meeting's Results</a></li>
+                <li class="@Html.IsSelected(action: "InlineGraphs")"><a href="@Url.Action("Summary", "Profile")">Year's Average Count Results</a></li>
+            </ul>
         </li>
         <li class="@Html.IsSelected(controller: "Charts")">
             <a href="#"><span class="nav-label">Charts</span><span class="fa arrow"></span> </a>

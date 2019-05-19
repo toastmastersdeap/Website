@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model '\\192.168.27.16\homes\jose\Projects\Toast\Toast\Toast\Models\AccountModel.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Projects\Repos\Toast\Toast\Models\AspnetUsers.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

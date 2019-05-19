@@ -13,10 +13,10 @@ namespace Toast.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class AspnetUsers : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public AspnetUsers()
+            : base("name=AspnetUsers")
         {
         }
     
@@ -27,7 +27,9 @@ namespace Toast.Models
     
         public virtual DbSet<AspNetUserExceptionLog> AspNetUserExceptionLogs { get; set; }
         public virtual DbSet<AspNetUser> AspNetUsers { get; set; }
+        public virtual DbSet<AspNetRole> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserLoginLog> AspNetUserLoginLogs { get; set; }
+        public virtual DbSet<AspNetUserRole> AspNetUserRoles { get; set; }
         public virtual DbSet<AspNetUsersAttempt> AspNetUsersAttempts { get; set; }
     }
 }
