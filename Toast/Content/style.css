@@ -782,8 +782,8 @@
     .btn-success:active,
     .btn-success.active,
     .open .dropdown-toggle.btn-success {
-        background-color: #74d348;
-        border-color: #74d348;
+        background-color: #004165;
+        border-color: #004165;
         color: #fff
     }
 
@@ -808,8 +808,8 @@
         fieldset[disabled] .btn-success:focus,
         fieldset[disabled] .btn-success:active,
         fieldset[disabled] .btn-success.active {
-            background-color: #56b22b;
-            border-color: #56b22b
+            background-color: #2489cc;
+            border-color: #2489cc
         }
 
 .btn-info {
@@ -3451,7 +3451,7 @@ body {
 }
 
 #menu {
-    width: 180px; /* JA: We might want to increase this */
+    width: 260px; /* JA: We might want to increase this */
     bottom: 0;
     float: left;
     left: 0;
@@ -3460,16 +3460,8 @@ body {
     transition: margin .4s ease 0s;
 }
 
-/* For Mobile example */
-/*@media (max-width: 328px)
-{
-    #menu {
-        width: 90px;
-    }
-}*/
-
 #wrapper {
-    margin: 0 0 0 180px;
+    margin: 0 0 0 260px;
     padding: 0;
     background: #f1f3f6;
     border-left: 1px solid #eaeaea;
@@ -3529,7 +3521,7 @@ body {
 }
 
 .fixed-sidebar.show-sidebar #menu {
-    width: 180px
+    width: 260px
 }
 
 .sidebar-scroll #menu {
@@ -3812,7 +3804,7 @@ body.modal-open {
 
 #logo {
     float: left;
-    width: 180px;
+    width: 260px;
     padding: 10px;
     text-align: center;
     text-shadow: 2px 2px 4px rgba(0,0,0,0.25);
@@ -3836,6 +3828,13 @@ body.modal-open {
 .profile-picture {
     padding: 20px 20px;
     text-align: center;
+}
+
+@media(max-width:768px)
+{
+    .profile-picture {
+        display: none;
+    }
 }
 
 .label-menu-corner .label {
@@ -3977,7 +3976,7 @@ body.modal-open {
 }
 
 body.hide-sidebar #menu {
-    margin-left: -180px
+    margin-left: -260px
 }
 
 body.hide-sidebar #wrapper {
@@ -3985,7 +3984,7 @@ body.hide-sidebar #wrapper {
 }
 
 body.page-small #menu {
-    margin-left: -180px
+    margin-left: -260px
 }
 
 body.page-small #wrapper {
@@ -3997,7 +3996,7 @@ body.page-small.show-sidebar #menu {
 }
 
 body.page-small.show-sidebar #wrapper {
-    margin-left: 180px
+    margin-left: 260px
 }
 
 a {
@@ -4337,8 +4336,16 @@ a {
 }
 
 .form-control {
-    border-color: #eaeaea !important
+    border-color: #eaeaea !important;
+
 }
+
+    .form-control.input-shadow:hover,
+    .form-control.input-shadow:focus {
+        color: #4b515d;
+        border: 1px solid;
+        box-shadow: inset 1px 2px 6px rgba(0, 0, 0, 0.07);
+    }
 
 .input-group-addon {
     background: #fafbfc;
