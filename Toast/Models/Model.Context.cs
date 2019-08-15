@@ -13,10 +13,10 @@ namespace Toast.Models
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class Entities : DbContext
+    public partial class DevConnectionString : DbContext
     {
-        public Entities()
-            : base("name=Entities")
+        public DevConnectionString()
+            : base("name=DevConnectionString")
         {
         }
     

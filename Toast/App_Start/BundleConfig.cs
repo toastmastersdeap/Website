@@ -1,16 +1,37 @@
-﻿using System.Web;
+﻿using System.Collections.Generic;
+using System.Web;
 using System.Web.Optimization;
 
 namespace Toast
 {
+    internal class AsIsBundleOrderer : IBundleOrderer
+    {
+        public virtual IEnumerable<BundleFile> OrderFiles(BundleContext context, IEnumerable<BundleFile> files)
+        {
+            return files;
+        }
+    }
+
+    internal static class BundleExtensions
+    {
+        public static Bundle ForceOrdered(this Bundle sb)
+        {
+            sb.Orderer = new AsIsBundleOrderer();
+            return sb;
+        }
+    }
+
     public class BundleConfig
     {
-        // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
             // Toasty style
             bundles.Add(new StyleBundle("~/bundles/toasty/css").Include(
                       "~/Content/style.css", new CssRewriteUrlTransform()));
+
+            // Landing style
+            bundles.Add(new StyleBundle("~/bundles/landing/css").Include(
+                      "~/Content/Site.css"));
 
             // Toasty script
             bundles.Add(new ScriptBundle("~/bundles/toasty/js").Include(
@@ -19,7 +40,7 @@ namespace Toast
                       "~/Vendor/iCheck/icheck.min.js",
                       "~/Vendor/peity/jquery.peity.min.js",
                       "~/Vendor/sparkline/index.js",
-                      "~/Scripts/toasty.js"));
+                      "~/Scripts/toasty.js").ForceOrdered());
 
             bundles.Add(new ScriptBundle("~/bundles/jquery/js").Include(
                         "~/Scripts/jquery-3.3.1.js"));
@@ -40,16 +61,14 @@ namespace Toast
             bundles.Add(new StyleBundle("~/bundles/peicon7stroke/css").Include(
                       "~/Icons/pe-icon-7-stroke/css/pe-icon-7-stroke.css", new CssRewriteUrlTransform()));
 
-            // Font Awesome icons style
-            bundles.Add(new StyleBundle("~/bundles/font-awesome/css").Include(
-                      "~/Vendor/fontawesome/css/font-awesome.min.css", new CssRewriteUrlTransform()));
-
             //bundles.Add(new StyleBundle("~/bundles/bootstrap/css").Include(
             //    "~/Content/bootstrap.css"));
             ////"~/Content/site.css"));
 
             //bundles.Add(new ScriptBundle("~/bundles/bootstrap/js").Include(
             //     "~/Scripts/bootstrap.js"));
+
+
 
             // Bootstrap style
             bundles.Add(new StyleBundle("~/bundles/bootstrap/css").Include(
@@ -94,7 +113,7 @@ namespace Toast
                       "~/Vendor/flot/jquery.flot.resize.js",
                       "~/Vendor/flot/jquery.flot.pie.js",
                       "~/Vendor/flot.curvedlines/curvedLines.js",
-                      "~/Vendor/jquery.flot.spline/index.js"));
+                      "~/Vendor/jquery.flot.spline/index.js").ForceOrdered());
         }
     }
 }

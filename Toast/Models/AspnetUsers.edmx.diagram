@@ -4,15 +4,17 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="627f34759c96402d937f2b858d8591cc" Name="Diagram1">
-        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserExceptionLog" Width="1.5" PointX="3" PointY="1.375" IsExpanded="true" />
-        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUser" Width="1.5" PointX="0.75" PointY="1.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="Toast_DevModel1.AspNetRole" Width="1.5" PointX="5.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserLoginLog" Width="1.5" PointX="3" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserRole" Width="1.5" PointX="5.75" PointY="3.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUsersAttempt" Width="1.5" PointX="5.75" PointY="6.75" IsExpanded="true" />
-        <AssociationConnector Association="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers" ManuallyRouted="false" />
-        <AssociationConnector Association="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers" ManuallyRouted="false" />
+      <Diagram DiagramId="627f34759c96402d937f2b858d8591cc" Name="Diagram1" ZoomLevel="87">
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserClaim" Width="2.125" PointX="5.75" PointY="0.75" />
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserExceptionLog" Width="2.125" PointX="3" PointY="5.125" />
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserLoginLog" Width="2.125" PointX="3" PointY="1.375" />
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserLogin" Width="2.125" PointX="5.75" PointY="3.75" />
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUser" Width="2.125" PointX="0.75" PointY="1.25" />
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetRole" Width="2.125" PointX="5.75" PointY="6.75" />
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUserRole" Width="2.125" PointX="8.625" PointY="0.75" />
+        <EntityTypeShape EntityType="Toast_DevModel1.AspNetUsersAttempt" Width="2.125" PointX="7.75" PointY="3.75" />
+        <AssociationConnector Association="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers" />
+        <AssociationConnector Association="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

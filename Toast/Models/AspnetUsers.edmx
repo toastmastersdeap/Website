@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="Toast_DevModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+    <Schema Namespace="Toast_DevModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Toast_Dev.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetRoles">
@@ -14,6 +14,15 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetRoles' does not have a primary
           </Key>
           <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserClaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="ClaimType" Type="nvarchar(max)" />
+          <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
         <EntityType Name="AspNetUserExceptionLogs">
           <Key>
@@ -32,8 +41,6 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetRoles' does not have a primary
           <Property Name="City" Type="nvarchar" MaxLength="64" />
           <Property Name="DateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
         </EntityType>
-        <!--Errors Found During Generation:
-warning 6002: The table/view 'Toast_Dev.dbo.AspNetUserLoginLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserLoginLogs">
           <Key>
             <PropertyRef Name="UserID" />
@@ -47,6 +54,16 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUserLoginLogs' does not have a
           <Property Name="City" Type="nvarchar" MaxLength="64" />
           <Property Name="LoginDateTime" Type="datetimeoffset" Precision="7" />
           <Property Name="LogoffDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'Toast_Dev.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -73,7 +90,7 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUserRoles' does not have a pri
           <Property Name="IPAddressCountry" Type="nvarchar" MaxLength="128" />
           <Property Name="IPAddressCity" Type="nvarchar" MaxLength="128" />
           <Property Name="Delinquent" Type="bit" Nullable="false" />
-          <Property Name="LifetimeValue" Type="decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LifetimeValue" Type="decimal" Precision="18" Scale="2" />
           <Property Name="Email" Type="nvarchar" MaxLength="256" />
           <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
           <Property Name="DemoAccount" Type="bit" Nullable="false" />
@@ -136,26 +153,16 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           </ReferentialConstraint>
         </Association>
         <EntityContainer Name="Toast_DevModel1StoreContainer">
+          <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserExceptionLogs" EntityType="Self.AspNetUserExceptionLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLoginLogs" EntityType="Self.AspNetUserLoginLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [AspNetRoles].[ID] AS [ID], 
     [AspNetRoles].[Name] AS [Name]
     FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="AspNetUserLoginLogs" EntityType="Self.AspNetUserLoginLogs" store:Type="Tables" store:Schema="dbo">
-            <DefiningQuery>SELECT 
-    [AspNetUserLoginLogs].[UserID] AS [UserID], 
-    [AspNetUserLoginLogs].[IP] AS [IP], 
-    [AspNetUserLoginLogs].[Device] AS [Device], 
-    [AspNetUserLoginLogs].[JavascriptVersion] AS [JavascriptVersion], 
-    [AspNetUserLoginLogs].[IsMobileDevice] AS [IsMobileDevice], 
-    [AspNetUserLoginLogs].[Country] AS [Country], 
-    [AspNetUserLoginLogs].[City] AS [City], 
-    [AspNetUserLoginLogs].[LoginDateTime] AS [LoginDateTime], 
-    [AspNetUserLoginLogs].[LogoffDateTime] AS [LogoffDateTime]
-    FROM [dbo].[AspNetUserLoginLogs] AS [AspNetUserLoginLogs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -182,19 +189,45 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
             <End Role="AspNetUserLoginLogs" EntitySet="AspNetUserLoginLogs" />
           </AssociationSet>
         </EntityContainer>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="Toast_DevModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUserClaims" EntityType="Toast_DevModel1.AspNetUserClaim" />
+          <EntitySet Name="AspNetUserExceptionLogs" EntityType="Toast_DevModel1.AspNetUserExceptionLog" />
+          <EntitySet Name="AspNetUserLoginLogs" EntityType="Toast_DevModel1.AspNetUserLoginLog" />
+          <EntitySet Name="AspNetUserLogins" EntityType="Toast_DevModel1.AspNetUserLogin" />
+          <EntitySet Name="AspNetUsers" EntityType="Toast_DevModel1.AspNetUser" />
+          <EntitySet Name="AspNetRoles" EntityType="Toast_DevModel1.AspNetRole" />
+          <EntitySet Name="AspNetUserRoles" EntityType="Toast_DevModel1.AspNetUserRole" />
+          <EntitySet Name="AspNetUsersAttempts" EntityType="Toast_DevModel1.AspNetUsersAttempt" />
+          <AssociationSet Name="FK_AspNetUserExceptionLogs_AspNetUsers" Association="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserExceptionLog" EntitySet="AspNetUserExceptionLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserLoginLogs_AspNetUsers" Association="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLoginLog" EntitySet="AspNetUserLoginLogs" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetUserClaim">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
         <EntityType Name="AspNetUserExceptionLog">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
           <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="Message" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="StackTrace" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="StackTrace" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="LineNumber" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="Device" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
@@ -203,14 +236,39 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="DateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_AspNetUserExceptionLogs_AspNetUsers" FromRole="AspNetUserExceptionLogs" ToRole="AspNetUsers" />
+          <NavigationProperty Name="AspNetUser" Relationship="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers" FromRole="AspNetUserExceptionLog" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLoginLog">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Device" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="JavascriptVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="IsMobileDevice" Type="Boolean" />
+          <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LogoffDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUserLoginLog" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUserLogin">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="UserName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
           <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
@@ -220,7 +278,7 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           <Property Name="IPAddressCountry" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="IPAddressCity" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Delinquent" Type="Boolean" Nullable="false" />
-          <Property Name="LifetimeValue" Type="Decimal" Precision="18" Scale="2" Nullable="false" />
+          <Property Name="LifetimeValue" Type="Decimal" Precision="18" Scale="2" />
           <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
           <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
           <Property Name="DemoAccount" Type="Boolean" Nullable="false" />
@@ -241,39 +299,24 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="RegistrationDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AspNetUserExceptionLogs" Relationship="Self.FK_AspNetUserExceptionLogs_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserExceptionLogs" />
-          <NavigationProperty Name="AspNetUserLoginLog" Relationship="Self.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUsers" ToRole="AspNetUserLoginLogs" />
+          <NavigationProperty Name="AspNetUserExceptionLogs" Relationship="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserExceptionLog" />
+          <NavigationProperty Name="AspNetUserLoginLog" Relationship="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserLoginLog" />
         </EntityType>
         <EntityType Name="AspNetRole">
           <Key>
             <PropertyRef Name="ID" />
             <PropertyRef Name="Name" />
           </Key>
-          <Property Name="ID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
-        </EntityType>
-        <EntityType Name="AspNetUserLoginLog">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="Device" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Name="JavascriptVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Name="IsMobileDevice" Type="Boolean" />
-          <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="LoginDateTime" Type="DateTimeOffset" Precision="7" />
-          <Property Name="LogoffDateTime" Type="DateTimeOffset" Precision="7" />
-          <NavigationProperty Name="AspNetUser" Relationship="Self.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUserLoginLogs" ToRole="AspNetUsers" />
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetUserRole">
           <Key>
             <PropertyRef Name="UserID" />
             <PropertyRef Name="RoleID" />
           </Key>
-          <Property Name="UserID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="RoleID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="RoleID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetUsersAttempt">
           <Key>
@@ -282,155 +325,158 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
             <PropertyRef Name="Country" />
             <PropertyRef Name="DateTime" />
           </Key>
-          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
-          <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" Nullable="false" MaxLength="16" FixedLength="false" Unicode="true" />
           <Property Name="Device" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Country" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="DateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
         </EntityType>
         <Association Name="FK_AspNetUserExceptionLogs_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="0..1" />
-          <End Role="AspNetUserExceptionLogs" Type="Self.AspNetUserExceptionLog" Multiplicity="*" />
+          <End Type="Toast_DevModel1.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
+          <End Type="Toast_DevModel1.AspNetUserExceptionLog" Role="AspNetUserExceptionLog" Multiplicity="*" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="AspNetUser">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="AspNetUserExceptionLogs">
+            <Dependent Role="AspNetUserExceptionLog">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
         <Association Name="FK_AspNetUserLoginLogs_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUser" Multiplicity="1" />
-          <End Role="AspNetUserLoginLogs" Type="Self.AspNetUserLoginLog" Multiplicity="0..1" />
+          <End Type="Toast_DevModel1.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="Toast_DevModel1.AspNetUserLoginLog" Role="AspNetUserLoginLog" Multiplicity="0..1" />
           <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
+            <Principal Role="AspNetUser">
               <PropertyRef Name="ID" />
             </Principal>
-            <Dependent Role="AspNetUserLoginLogs">
+            <Dependent Role="AspNetUserLoginLog">
               <PropertyRef Name="UserID" />
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
-          <EntitySet Name="AspNetUserExceptionLogs" EntityType="Self.AspNetUserExceptionLog" />
-          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUser" />
-          <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRole" />
-          <EntitySet Name="AspNetUserLoginLogs" EntityType="Self.AspNetUserLoginLog" />
-          <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRole" />
-          <EntitySet Name="AspNetUsersAttempts" EntityType="Self.AspNetUsersAttempt" />
-          <AssociationSet Name="FK_AspNetUserExceptionLogs_AspNetUsers" Association="Self.FK_AspNetUserExceptionLogs_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserExceptionLogs" EntitySet="AspNetUserExceptionLogs" />
-          </AssociationSet>
-          <AssociationSet Name="FK_AspNetUserLoginLogs_AspNetUsers" Association="Self.FK_AspNetUserLoginLogs_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserLoginLogs" EntitySet="AspNetUserLoginLogs" />
-          </AssociationSet>
-        </EntityContainer>
-      </Schema>
+        </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="Toast_DevModel1StoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AspNetUserClaims">
+            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserClaim">
+              <MappingFragment StoreEntitySet="AspNetUserClaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserExceptionLogs">
             <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserExceptionLog">
               <MappingFragment StoreEntitySet="AspNetUserExceptionLogs">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
-                <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-                <ScalarProperty Name="Device" ColumnName="Device" />
-                <ScalarProperty Name="JavascriptVersion" ColumnName="JavascriptVersion" />
-                <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUsers">
-            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUser">
-              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
+                <ScalarProperty Name="JavascriptVersion" ColumnName="JavascriptVersion" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="LineNumber" ColumnName="LineNumber" />
+                <ScalarProperty Name="StackTrace" ColumnName="StackTrace" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="UserName" ColumnName="UserName" />
-                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
-                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
-                <ScalarProperty Name="LastName" ColumnName="LastName" />
-                <ScalarProperty Name="Gender" ColumnName="Gender" />
-                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
-                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
-                <ScalarProperty Name="IPAddressCountry" ColumnName="IPAddressCountry" />
-                <ScalarProperty Name="IPAddressCity" ColumnName="IPAddressCity" />
-                <ScalarProperty Name="Delinquent" ColumnName="Delinquent" />
-                <ScalarProperty Name="LifetimeValue" ColumnName="LifetimeValue" />
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
-                <ScalarProperty Name="DemoAccount" ColumnName="DemoAccount" />
-                <ScalarProperty Name="MasterAccount" ColumnName="MasterAccount" />
-                <ScalarProperty Name="AdminAccount" ColumnName="AdminAccount" />
-                <ScalarProperty Name="ProfileAdminTable" ColumnName="ProfileAdminTable" />
-                <ScalarProperty Name="ProfileTableName" ColumnName="ProfileTableName" />
-                <ScalarProperty Name="TreasuryTableName_TBD_" ColumnName="TreasuryTableName(TBD)" />
-                <ScalarProperty Name="RegistrationCode" ColumnName="RegistrationCode" />
-                <ScalarProperty Name="ProfileUpdated" ColumnName="ProfileUpdated" />
-                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
-                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
-                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
-                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
-                <ScalarProperty Name="PhoneSMSAllowed" ColumnName="PhoneSMSAllowed" />
-                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
-                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
-                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
-                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
-                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
-          <EntitySetMapping Name="AspNetRoles">
-            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetRole">
-              <MappingFragment StoreEntitySet="AspNetRoles">
-                <ScalarProperty Name="ID" ColumnName="ID" />
-                <ScalarProperty Name="Name" ColumnName="Name" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLoginLogs">
             <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserLoginLog">
               <MappingFragment StoreEntitySet="AspNetUserLoginLogs">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-                <ScalarProperty Name="Device" ColumnName="Device" />
-                <ScalarProperty Name="JavascriptVersion" ColumnName="JavascriptVersion" />
-                <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
                 <ScalarProperty Name="LogoffDateTime" ColumnName="LogoffDateTime" />
+                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
+                <ScalarProperty Name="JavascriptVersion" ColumnName="JavascriptVersion" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLogins">
+            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserLogin">
+              <MappingFragment StoreEntitySet="AspNetUserLogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneSMSAllowed" ColumnName="PhoneSMSAllowed" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="ProfileUpdated" ColumnName="ProfileUpdated" />
+                <ScalarProperty Name="RegistrationCode" ColumnName="RegistrationCode" />
+                <ScalarProperty Name="TreasuryTableName_TBD_" ColumnName="TreasuryTableName(TBD)" />
+                <ScalarProperty Name="ProfileTableName" ColumnName="ProfileTableName" />
+                <ScalarProperty Name="ProfileAdminTable" ColumnName="ProfileAdminTable" />
+                <ScalarProperty Name="AdminAccount" ColumnName="AdminAccount" />
+                <ScalarProperty Name="MasterAccount" ColumnName="MasterAccount" />
+                <ScalarProperty Name="DemoAccount" ColumnName="DemoAccount" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LifetimeValue" ColumnName="LifetimeValue" />
+                <ScalarProperty Name="Delinquent" ColumnName="Delinquent" />
+                <ScalarProperty Name="IPAddressCity" ColumnName="IPAddressCity" />
+                <ScalarProperty Name="IPAddressCountry" ColumnName="IPAddressCountry" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetRoles">
+            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetRole">
+              <MappingFragment StoreEntitySet="AspNetRoles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserRoles">
             <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserRole">
               <MappingFragment StoreEntitySet="AspNetUserRoles">
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AspNetUsersAttempts">
             <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUsersAttempt">
               <MappingFragment StoreEntitySet="AspNetUsersAttempts">
-                <ScalarProperty Name="Email" ColumnName="Email" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-                <ScalarProperty Name="Device" ColumnName="Device" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="City" ColumnName="City" />
                 <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

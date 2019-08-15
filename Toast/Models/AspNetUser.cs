@@ -31,7 +31,7 @@ namespace Toast.Models
         public string IPAddressCountry { get; set; }
         public string IPAddressCity { get; set; }
         public bool Delinquent { get; set; }
-        public decimal LifetimeValue { get; set; }
+        public Nullable<decimal> LifetimeValue { get; set; }
         public string Email { get; set; }
         public bool EmailConfirmed { get; set; }
         public bool DemoAccount { get; set; }

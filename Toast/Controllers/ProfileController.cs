@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Toast.Models;
 
 namespace Toast.Controllers
 {
@@ -12,7 +13,7 @@ namespace Toast.Controllers
         // GET: Profile
         public ActionResult Index(string memberId)
         {
-            ViewBag.Title = "Toasty";
+            ViewBag.Title = "Profile";
 
             return View();
         }
@@ -20,7 +21,7 @@ namespace Toast.Controllers
         // GET: AhTrend
         public ActionResult AhTrend(string memberId)
         {
-            ViewBag.Title = "Toasty";
+            ViewBag.Title = "AhTrend";
 
             return View();
         }
@@ -28,7 +29,7 @@ namespace Toast.Controllers
         // GET: Meetings
         public ActionResult Meetings(string memberId)
         {
-            ViewBag.Title = "Toasty";
+            ViewBag.Title = "Meetings";
 
             return View();
         }
@@ -36,7 +37,7 @@ namespace Toast.Controllers
         // GET: Summary
         public ActionResult Summary(string memberId)
         {
-            ViewBag.Title = "Toasty";
+            ViewBag.Title = "Summary";
 
             return View();
         }

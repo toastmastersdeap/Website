@@ -14,21 +14,131 @@
     {@RenderSection("Styles", required: false)}
 
     <!-- Primary Toasty style -->
-    @Styles.Render("~/bundles/font-awesome/css")
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     @Styles.Render("~/bundles/animate/css")
     @Styles.Render("~/bundles/bootstrap/css")
     @Styles.Render("~/bundles/peicon7stroke/css")
     @Styles.Render("~/bundles/toasty/css")
+    @Styles.Render("~/bundles/landing/css")
 </head>
 <body class="landing-page">
 
-    <!-- Simple splash screen-->
-    <div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Home</h1><p>Toastmasters </p><div class="spinner"> <div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div> </div> </div> </div>
     <!--[if lt IE 7]>
     <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
+    <!-- Header Top -->
+    <header class="header">
+        <nav class="navbar">
+            <div class="container">
+                <div class="navbar-header">
+                    <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="~/Images/logo_maroon.png" href="#page-top" />
+                    </a>
+                </div>
+                <div id="navbar" class="navbar-collapse collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="active"><a class="page-scroll" href="#page-top">Home</a></li>
+                        <li><a class="page-scroll" href="#discover">Discover</a></li>
+                        <li><a class="page-scroll" href="#features">Features</a></li>
+                        <li><a class="page-scroll" href="#contact">Contact</a></li>
+                        <li><a class="page-scroll" href="~/Account/Login">Log In</a></li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
     <!-- Main view  -->
     @RenderBody()
+
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 col-md-push-1">
+                    <ul class="list-unstyled">
+                        <li>
+                            <h5>What we Do</h5>
+                        </li>
+                        <li>
+                            TBD 1
+                        </li>
+                        <li>
+                            TBD 2
+                        </li>
+                        <li>
+                            TBD 3
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-md-push-1">
+                    <ul class="list-unstyled">
+                        <li>
+                            <h5>Organization</h5>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("","")">About Us</a>
+                        </li>
+                        <li>
+                            <a href="@Url.Action("","")">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-4 col-md-push-1">
+                    <ul class="list-unstyled">
+                        <li>
+                            <h5>Newsletter</h5>
+                        </li>
+                        <li>
+                            Keep in touch
+                        </li>
+                        <li>
+                            <a href="@Url.Action("","")">Contact Us</a>
+                        </li>
+                        <li>
+                            <label id="confirm-subscription" hidden="hidden">Subscribed!</label>
+                            <input id="subscribe" type="button" value="Subscribe" name="subscribe" class="btn btn-default btn-group-sm">
+                            <div id="mc-embed_signup">
+                                <form id="mc-embedded-subscribe-form" action="" method="post" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate hidden="hidden">
+                                    <input id="mce-NAME" type="text" name="NAME" class="form-control input-sm" placeholder="Your Name">
+                                    <input id="mce-EMAIL" type="email" name="EMAIL" class="form-control input-sm" placeholder="Your Email" />
+                                    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+                                    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="" tabindex="-1" value=""></div>
+                                    <div class="clear"><input id="mc-embedded-subscribe" type="submit" value="Subscribe" name="subscribe" class="btn btn-default btn-group-sm"></div>
+                                </form>
+                            </div>
+                        </li>
+                        <li>
+                            <ul class="list-inline">
+                                <li>
+                                    <a target="_blank" href="//www.twitter.com/speakeranalytics"><i class="fa fa-linkedin-square"></i></a>
+                                </li>
+                                <li>
+                                    <a target="_blank" href="//www.facebook.com/speakeranalytics"><i class="fa fa-twitter-square"></i></a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row text-center">
+                <div class="col-md-6">
+                    <i class="fa fa-copyright"></i>SpeakerAnalytics @DateTimeOffset.UtcNow.Year
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-inline list-unstyled">
+                        <li><a href="">Privacy Policy</a></li>
+                        <li><a href="">Terms of Use</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
 
     <!-- Section for main scripts render -->
     @Scripts.Render("~/bundles/jquery/js")

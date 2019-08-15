@@ -3,6 +3,16 @@
 }
 
 <div class="normalheader ">
+    <div class="row text-center">
+        <div class="col-md-12">
+            <div id="bootstrap_alerts">
+                @if (TempData.ContainsKey("flash"))
+                {
+                    @Html.Partial("_Alert", TempData["flash"]);
+                }
+            </div>
+        </div>
+    </div>
     <div class="hpanel">
         <div class="panel-body">
             <a class="small-header-action" href="">
@@ -10,7 +20,6 @@
                     <i class="fa fa-arrow-up"></i>
                 </div>
             </a>
-
             <div id="hbreadcrumb" class="pull-right m-t-lg">
                 <ol class="hbreadcrumb breadcrumb">
                     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
@@ -53,7 +62,6 @@
                                     <table class="table table-striped">
                                         <thead>
                                             <tr>
-
                                                 <th>#</th>
                                                 <th>Project </th>
                                                 <th>Name </th>

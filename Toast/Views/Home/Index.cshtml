@@ -3,63 +3,107 @@
     ViewBag.Title = "Index";
 }
 
-<nav class="navbar navbar-default navbar-fixed-top">
-    <div class="container">
-        <div class="navbar-header">
-            <button aria-controls="navbar" aria-expanded="false" data-target="#navbar" data-toggle="collapse" class="navbar-toggle collapsed" type="button">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="@Url.Action("Index", "Dashboard")" class="navbar-brand">HOME</a>
-        </div>
-        <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav navbar-right">
-                <li class="active"><a class="page-scroll" href="#page-top">Home</a></li>
-                <li><a class="page-scroll" href="~/Account/Login">Log In</a></li>
-                <li><a class="page-scroll" href="#components">TBD</a></li>
-                <li><a class="page-scroll" href="#features">Features</a></li>
-                <li><a class="page-scroll" href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
+<div id="home">
+    <div class="fullscreen">
+        <div class="overlay">
+            <div class="center-col white-text">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-7 col-lg-6">
+                            <h1 class="heading mb-15">Honeywell Spoken <span>Toastmasters</span></h1>
+                            <h2 class="heading">
+                                Where Leaders are Made
+                            </h2>
+                            <div class="clearfix">
+                                <a href="~/Account/Register" class="btn btn-outline btn-default m-t-md">
+                                    <i class="fa fa-chevron-right mr-2"></i> Get Started
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-5 offset-lg-1">
+                            <div class="row">
+                                <div class="col-md-4 intro-image">
+                                    <img src="~/Images/svg/candidate.svg" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-2 intro-image">
+                                    <img src="~/Images/svg/inspection.svg" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-4 col-md-offset-4 intro-image">
+                                    <img src="~/Images/svg/setup_analytics.svg" alt="" class="img-fluid">
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none" class="abs-svg-bottom">
+                <polygon points="100 100, 0 100, 100 0" fill="#fff"></polygon>
+            </svg>
 
-<header id="page-top">
-    <div class="container">
-        <div class="heading">
-            <h1>
-                Welcome to Toastmasters
-            </h1>
-            <span>Contrary to popular belief, Lorem Ipsum is not<br /> simply random text for print.</span>
-            <p class="small">
-                Lorem Ipsum is simply dummy text of the printing and tLorem Ipsum is  Lorem Ipsum is simply dummy of the simply dummy text of the ypesetting.
-            </p>
-            <a href="#" class="btn btn-success btn-sm">Learn more</a>
         </div>
-        <div class="heading-image animate-panel" data-child="img-animate" data-effect="fadeInRight">
-            <p class="small">Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
-        </div>
-    </div>
-</header>
+</div>
+
 <section>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
-                <h4>eManagement System</h4>
-                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
-                <p><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+                <div class="hpanel plan-box hmaroon">
+                    <div class="panel-heading hbuilt text-center">
+                        <h4>eManagement System</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="intro-image m-b-md text-center">
+                            <img src="~/Images/svg/group_chat.svg" alt="">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                                <p class="text-center"><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                <h4>Learn from your Data</h4>
-                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of.</p>
-                <p><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+                <div class="hpanel plan-box plan-box-center hmaroon">
+                    <div class="panel-heading hbuilt text-center">
+                        <h4>Learn from your Data</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="intro-image m-b-md text-center">
+                            <img src="~/Images/svg/report.svg" alt="">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                                <p class="text-center"><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-4">
-                <h4>Unique Dashboard</h4>
-                <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour.</p>
-                <p><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+                <div class="hpanel plan-box hmaroon">
+                    <div class="panel-heading hbuilt text-center">
+                        <h4>Unique Dashboard</h4>
+                    </div>
+                    <div class="panel-body">
+                        <div class="intro-image m-b-md text-center">
+                            <img src="~/Images/svg/dashboard.svg" alt="">
+                        </div>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <p>Donec sed odio dui. Etiam porta sem malesuada magna mollis euismod. Nullam id dolor id nibh ultricies vehicula ut id elit. Morbi leo risus.</p>
+                                <p class="text-center"><a class="navy-link btn btn-sm" href="#" role="button">Learn more</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -102,7 +146,7 @@
     </div>
 </section>
 
-<section id="features2" class="bg-light">
+<section id="features2">
     <div class="container">
         <div class="row text-center">
             <div class="col-lg-12">
@@ -215,12 +259,26 @@
             </div>
         </div>
 
-
     </div>
 </section>
 
 @section Scripts {
+
     <script type="text/javascript">
+
+        $(document).ready(function () {
+            $(window).scroll(function () {
+                if ($(window).scrollTop() > $(window).height()) {
+                    $(".landing-page .header").css({ "background-color": "#fff", "box-shadow": "0 0 7px 0 rgba(0, 0, 0, 0.2)" });
+                    $(".landing-page .navbar-nav > li > a").css({ "background-color": "#fff" });
+                    $(".navbar-toggle").css({ "border": "1px solid #772432" });
+                    $(".navbar-toggle .icon-bar").css({ "background-color": "#772432" });
+                } else {
+                    $(".landing-page .header").css({ "background-color": "transparent", "box-shadow": "none" });
+                    $(".landing-page .navbar-nav > li > a").css({ "background-color": "transparent" });
+                }
+            });
+        })
 
         $(function () {
 

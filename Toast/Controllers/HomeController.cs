@@ -42,5 +42,26 @@ namespace Toast.Controllers
 
             return View();
         }
+
+        public ActionResult OurWebsite()
+        {
+            ViewBag.Message = "Your website descritpion page.";
+
+            return View(); 
+        }
+
+        public ActionResult LearnData()
+        {
+            ViewBag.Message = "Learn you data page.";
+
+            return View(); 
+        }
+
+        public ActionResult UniqueDashboard()
+        {
+            ViewBag.Message = "Your Unique Dashboard description page.";
+
+            return View();
+        }
     }
 }

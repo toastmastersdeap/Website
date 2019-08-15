@@ -8,6 +8,16 @@
 <div class="login-container">
     <div class="row">
         <div class="col-md-12">
+            <div class="row text-center">
+                <div class="col-md-12">
+                    <div id="bootstrap_alerts">
+                        @if (TempData.ContainsKey("flash"))
+                        {
+                            @Html.Partial("_Alert", TempData["flash"]);
+                        }
+                    </div>
+                </div>
+            </div>
             <div class="text-center m-b-md">
                 <h3 class="font-bold">Hello</h3>
                 <p class="text-med">Log in or <a href="@Url.Action("Register", "Account")" class="text-success">register</a>.</p>
@@ -21,7 +31,7 @@
                         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                         <div class="form-group">
                             @Html.LabelFor(m => m.Email, new { @class = "control-label" })
-                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-shadow", placeholder="myemail@example.com" })
+                            @Html.TextBoxFor(m => m.Email, new { @class = "form-control input-shadow", placeholder = "myemail@example.com" })
                             @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                         </div>
                         <div class="form-group">
@@ -36,11 +46,6 @@
                             <p class="help-block small">If this is a private computer</p>
                         </div>
                         <input type="submit" value="Log In" class="font-bold btn btn-success btn-block" />
-
-                        @* TODO: Enable this once you have account confirmation enabled for password reset functionality
-                        <p>
-                            @Html.ActionLink("Forgot your password?", "ForgotPassword")
-                        </p>*@
                     }
                 </div>
             </div>

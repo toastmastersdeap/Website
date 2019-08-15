@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Toast.Utilities;
+using System;
 using System.Globalization;
 using System.Linq;
 using System.Security.Claims;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
+using MlkPwgen;
 using Toast.Models;
 
 namespace Toast.Controllers
@@ -61,6 +63,12 @@ namespace Toast.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+             if (Request.IsAuthenticated)
+             {
+                ModelState.AddModelError("", "It appears that you are already logged in or the page was refreshed while logging...");
+                AuthenticationManager.SignOut();
+             }
+
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
@@ -77,18 +85,51 @@ namespace Toast.Controllers
                 return View(model);
             }
 
+            if (string.IsNullOrEmpty(returnUrl))
+            {
+                returnUrl = "~/Profile/Index";
+            }
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
             var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
+                    var user = await UserManager.FindAsync(model.Email, model.Password);
+                    var userIP = GeoLocation.GetUserIP(Request).Split(':').First();
+                    var userCountry = GeoLocation.GetCountryFromIP(userIP);
+                    var userCity = GeoLocation.GetCityFromIP(userIP);
+                    var userJavascript = Request.Browser.Capabilities.Contains("javascriptversion")
+                       ? Request.Browser.Capabilities["javascriptversion"].ToString()
+                       : "Not Found";
+                    var userMobile = Request.Browser.Capabilities.Contains("isMobileDevice") &&
+                                     (Request.Browser.Capabilities["isMobileDevice"].ToString() != "false");
+
+                    if (user != null && user.EmailConfirmed)
+                    {
+                        // Add datetime of LogOn
+                        _dbSProc.InsertAspUserLogonTime(user.Id, userIP, userCountry, userCity, Request.Browser.Type, userJavascript, userMobile);
+
+                        // TODO:
+                        // We decide if the user is an Admin or a Member and redirect to the proper view
+                        //return RedirectToAction("Index", (user.ProfileType != AccountProfile.Individual && user.AdminAccount)) ? "Admin" : "Profile");
+                        return RedirectToAction("Index", "Profile");
+                    }
+                    //_dbSProc.InsertAspUserLogonAttempt(model.Email, userIP, userIP, userCountry, Request.Browser.Type);
+                    //ModelState.AddModelError("", "Email had not been confirmed.");
+                    return View(model);
+
+                    //return RedirectToLocal(returnUrl);
+
                 case SignInStatus.LockedOut:
                     return View("Lockout");
+
                 case SignInStatus.RequiresVerification:
                     return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+
                 case SignInStatus.Failure:
+
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
                     return View(model);
@@ -155,24 +196,33 @@ namespace Toast.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userIP = GeoLocation.GetUserIP(Request).Split(':').First();
+
                 var user = new ApplicationUser
                 {
-                    UserName = model.Email,
+                    UserName = PasswordGenerator.Generate(length: 16),
                     Email = model.Email,
-                    //FirstName = model.FirstName,
-                    //LastName = model.LastName,
+                    FirstName = model.FirstName,
+                    LastName = model.LastName,
+                    IPAddress = userIP,
+                    IPAddressCountry = GeoLocation.GetCountryFromIP(userIP),
+                    IPAddressCity = GeoLocation.GetCityFromIP(userIP),
+                    RegistrationDate = DateTimeOffset.UtcNow
                 };
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
                     //TODO: Check for rememberBrowser from the Register view
+                    // This will log in the user after registration. Email still to be confirmed
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
-                    // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
-                    // string code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
-                    // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
-                    // await UserManager.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
+                    var code = await UserManager.GenerateEmailConfirmationTokenAsync(user.Id);
+                    var confirmationUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+                    await UserManager.EmailService.SendWelcomeEmail(user.FirstName, user.Email, confirmationUrl);
+                    TempData["email"] = user.Email;
+                    TempData["flash"] = new FlashSuccessViewModel("Welcome! Confirm your email for next log in.");
 
                     return RedirectToAction("Index", "Profile");
                 }
@@ -192,8 +242,26 @@ namespace Toast.Controllers
             {
                 return View("Error");
             }
+
             var result = await UserManager.ConfirmEmailAsync(userId, code);
-            return View(result.Succeeded ? "ConfirmEmail" : "Error");
+
+            if (result.Succeeded)
+            {
+                TempData["flash"] = new FlashSuccessViewModel("Your Email had been confirmed!");
+            }
+            else
+            {
+                TempData["flash"] = new FlashDangerViewModel("An error has occurr while confirming your account.");
+            }
+
+            if (User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Profile");
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         //
@@ -213,19 +281,27 @@ namespace Toast.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await UserManager.FindByNameAsync(model.Email);
+                var user = await UserManager.FindByEmailAsync(model.Email);
+
                 if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
-                    // Don't reveal that the user does not exist or is not confirmed
-                    return View("ForgotPasswordConfirmation");
+                    // Do nothing
+                    //Don't reveal that the user does not exist or is not confirmed
                 }
+                else
+                {
+                    // TODO:
+                    var userIP = "";
+                    var userCountry = "";
 
-                // For more information on how to enable account confirmation and password reset please visit https://go.microsoft.com/fwlink/?LinkID=320771
-                // Send an email with this link
-                // string code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
-                // var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);		
-                // await UserManager.SendEmailAsync(user.Id, "Reset Password", "Please reset your password by clicking <a href=\"" + callbackUrl + "\">here</a>");
-                // return RedirectToAction("ForgotPasswordConfirmation", "Account");
+                    // Send an email with this link
+                    var code = await UserManager.GeneratePasswordResetTokenAsync(user.Id);
+                    var callbackUrl = Url.Action("ResetPassword", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
+
+                    await UserManager.EmailService.SendResetPasswordEmail(user.FirstName, user.Email, userIP, userCountry, callbackUrl);
+                }
+                TempData["flash"] = new FlashSuccessViewModel("Password reset had been sent.");
+                return View("ForgotPasswordConfirmation");
             }
 
             // If we got this far, something failed, redisplay form
@@ -259,18 +335,23 @@ namespace Toast.Controllers
             {
                 return View(model);
             }
+
             var user = await UserManager.FindByNameAsync(model.Email);
+
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
+
             var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
             AddErrors(result);
+
             return View();
         }
 
@@ -279,7 +360,8 @@ namespace Toast.Controllers
         [AllowAnonymous]
         public ActionResult ResetPasswordConfirmation()
         {
-            return View();
+            TempData["flash"] = new FlashSuccessViewModel("Your password has been reset.");
+            return RedirectToAction("Login","Account");
         }
 
         //
