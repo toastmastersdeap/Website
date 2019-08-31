@@ -1,0 +1,1413 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="DB_A4B8F5_ToastDevModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="int" Nullable="false" />
+          <Property Name="DivisionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AspNetUserLoginLogs">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="IP" Type="nvarchar" MaxLength="16" />
+          <Property Name="Device" Type="nvarchar" MaxLength="32" />
+          <Property Name="JavascriptVersion" Type="nvarchar" MaxLength="32" />
+          <Property Name="IsMobileDevice" Type="bit" />
+          <Property Name="Country" Type="nvarchar" MaxLength="64" />
+          <Property Name="City" Type="nvarchar" MaxLength="64" />
+          <Property Name="LoginDateTime" Type="datetimeoffset" Precision="7" />
+          <Property Name="LogoffDateTime" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="AspNetUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="FirstName" Type="nvarchar" MaxLength="255" />
+          <Property Name="MiddleName" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastName" Type="nvarchar" MaxLength="255" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="8" />
+          <Property Name="DateOfBirth" Type="date" />
+          <Property Name="IPAddress" Type="nvarchar" MaxLength="64" />
+          <Property Name="IPAddressCountry" Type="nvarchar" MaxLength="128" />
+          <Property Name="IPAddressCity" Type="nvarchar" MaxLength="128" />
+          <Property Name="Delinquent" Type="bit" Nullable="false" />
+          <Property Name="LifetimeValue" Type="decimal" Precision="18" Scale="2" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bit" Nullable="false" />
+          <Property Name="DemoAccount" Type="bit" Nullable="false" />
+          <Property Name="MasterAccount" Type="bit" Nullable="false" />
+          <Property Name="AdminAccount" Type="bit" Nullable="false" />
+          <Property Name="ProfileAdminTable" Type="nvarchar" MaxLength="64" />
+          <Property Name="ProfileTableName" Type="nvarchar" MaxLength="64" />
+          <Property Name="TreasuryTableName(TBD)" Type="nvarchar" MaxLength="64" />
+          <Property Name="RegistrationCode" Type="nvarchar" MaxLength="24" />
+          <Property Name="ProfileUpdated" Type="bit" Nullable="false" />
+          <Property Name="PasswordHash" Type="nvarchar(max)" />
+          <Property Name="SecurityStamp" Type="nvarchar(max)" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="32" />
+          <Property Name="PhoneNumberConfirmed" Type="bit" Nullable="false" />
+          <Property Name="PhoneSMSAllowed" Type="bit" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bit" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" />
+          <Property Name="LockoutEnabled" Type="bit" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="RegistrationDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="ClubID" />
+          </Key>
+          <Property Name="ClubID" Type="int" Nullable="false" />
+          <Property Name="AreaID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClubEntityMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ClubID" Type="int" Nullable="false" />
+          <Property Name="ClubTable" Type="nchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ClubPositions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictID" />
+          </Key>
+          <Property Name="DistrictID" Type="int" Nullable="false" />
+          <Property Name="RegionID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="int" Nullable="false" />
+          <Property Name="DistrictID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileAwardsMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="AwardTitle" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="DateAcquired" Type="date" Nullable="false" />
+          <Property Name="DateUploaded" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileBusinessPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Position" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Custom" Type="bit" Nullable="false" />
+          <Property Name="Valid" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileComments">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ParentPostID" Type="int" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Message" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Hidden" Type="bit" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="DatePosted" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileExternalNotifications">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="TestCaseID" Type="int" Nullable="false" />
+          <Property Name="NotificationTypeID" Type="int" Nullable="false" />
+          <Property Name="TestCase" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Unread" Type="bit" Nullable="false" />
+          <Property Name="Processed" Type="bit" Nullable="false" />
+          <Property Name="EventDate" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileExternalNotificationsType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="32" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A4B8F5_ToastDev.dbo.ProfileMember' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="ProfileMember">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="TourShown" />
+          </Key>
+          <Property Name="MemberID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClubID" Type="int" />
+          <Property Name="PositionID" Type="int" />
+          <Property Name="Skills" Type="nvarchar" MaxLength="128" />
+          <Property Name="UniversitiesID" Type="nvarchar" MaxLength="128" />
+          <Property Name="UniversitiesRegionsID" Type="nvarchar" MaxLength="128" />
+          <Property Name="UniversityMajorsID" Type="nvarchar" MaxLength="128" />
+          <Property Name="UniversityDegreesID" Type="nvarchar" MaxLength="128" />
+          <Property Name="UniversityCountryID" Type="int" />
+          <Property Name="UniversityStateID" Type="int" />
+          <Property Name="UniversityAttending" Type="bit" />
+          <Property Name="GraduatesID" Type="nvarchar" MaxLength="128" />
+          <Property Name="GraduatesRegionsID" Type="nvarchar" MaxLength="128" />
+          <Property Name="GraduateMajorsID" Type="nvarchar" MaxLength="128" />
+          <Property Name="GraduateDegreesID" Type="nvarchar" MaxLength="128" />
+          <Property Name="GraduateCountryID" Type="int" />
+          <Property Name="GraduateStateID" Type="int" />
+          <Property Name="GraduateAttending" Type="bit" />
+          <Property Name="CityID" Type="int" />
+          <Property Name="UniversitySchoolGraduationDate" Type="date" />
+          <Property Name="GraduateSchoolGraduationDate" Type="date" />
+          <Property Name="ProfileCustomView" Type="nvarchar" MaxLength="255" />
+          <Property Name="About" Type="varchar" MaxLength="128" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="BannerLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProfileStatus" Type="nvarchar" MaxLength="24" />
+          <Property Name="ProfileInactiveDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="TourShown" Type="bit" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+        </EntityType>
+        <EntityType Name="ProfileMessages">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="SenderID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="ReceiverID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="SenderName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="SenderImageLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="Unread" Type="bit" />
+          <Property Name="Date" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileMessageSessions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="CreatedBy" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="DateCreated" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfileMessageUserSessions">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="SessionID" Type="nvarchar" MaxLength="10" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProfilePosts">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MemberID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Message" Type="nvarchar(max)" Nullable="false" />
+          <Property Name="MessageHeading" Type="nvarchar" MaxLength="128" />
+          <Property Name="MessageImageLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="Private" Type="bit" />
+          <Property Name="Hidden" Type="bit" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="DatePosted" Type="datetimeoffset" Precision="7" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A4B8F5_ToastDev.dbo.vw_UserBasicInfo' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="vw_UserBasicInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ClubID" />
+            <PropertyRef Name="TourShown" />
+          </Key>
+          <Property Name="ID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="511" />
+          <Property Name="Gender" Type="nvarchar" MaxLength="8" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" />
+          <Property Name="ProfileTableName" Type="nvarchar" MaxLength="64" />
+          <Property Name="MasterAccount" Type="bit" />
+          <Property Name="AdminAccount" Type="bit" />
+          <Property Name="ClubID" Type="int" Nullable="false" />
+          <Property Name="PositionID" Type="int" />
+          <Property Name="ImageLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="BannerLink" Type="nvarchar" MaxLength="255" />
+          <Property Name="ProfileStatus" Type="nvarchar" MaxLength="24" />
+          <Property Name="TourShown" Type="bit" Nullable="false" />
+          <Property Name="UpdateDate" Type="datetimeoffset" Precision="7" />
+          <Property Name="Position" Type="nvarchar" MaxLength="64" />
+        </EntityType>
+        <Association Name="FK__Area__DivisionID__2EDAF651">
+          <End Role="Division" Type="Self.Division" Multiplicity="1" />
+          <End Role="Area" Type="Self.Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Club__AreaID__31B762FC">
+          <End Role="Area" Type="Self.Area" Multiplicity="1" />
+          <End Role="Club" Type="Self.Club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaID" />
+            </Principal>
+            <Dependent Role="Club">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Division__Distri__3587F3E0">
+          <End Role="District" Type="Self.District" Multiplicity="1" />
+          <End Role="Division" Type="Self.Division" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictID" />
+            </Principal>
+            <Dependent Role="Division">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AspNetUserLoginLogs_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="AspNetUserLoginLogs" Type="Self.AspNetUserLoginLogs" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AspNetUserLoginLogs">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ClubEntityMap_Club">
+          <End Role="Club" Type="Self.Club" Multiplicity="1" />
+          <End Role="ClubEntityMap" Type="Self.ClubEntityMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="ClubID" />
+            </Principal>
+            <Dependent Role="ClubEntityMap">
+              <PropertyRef Name="ClubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileAwardsMap_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ProfileAwardsMap" Type="Self.ProfileAwardsMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileAwardsMap">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileComments_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ProfileComments" Type="Self.ProfileComments" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileComments">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMember_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ProfileMember" Type="Self.ProfileMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMember">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMember_ProfileBusinessPosition">
+          <End Role="ProfileBusinessPosition" Type="Self.ProfileBusinessPosition" Multiplicity="0..1" />
+          <End Role="ProfileMember" Type="Self.ProfileMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileBusinessPosition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMember">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessages_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ProfileMessages" Type="Self.ProfileMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessages">
+              <PropertyRef Name="SenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessages_AspNetUsers1">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ProfileMessages" Type="Self.ProfileMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessages">
+              <PropertyRef Name="ReceiverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessages_ProfileMessageSessions">
+          <End Role="ProfileMessageSessions" Type="Self.ProfileMessageSessions" Multiplicity="1" />
+          <End Role="ProfileMessages" Type="Self.ProfileMessages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileMessageSessions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessages">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessageUserSessions_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ProfileMessageUserSessions" Type="Self.ProfileMessageUserSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessageUserSessions">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessageUserSessions_ProfileMessageSessions">
+          <End Role="ProfileMessageSessions" Type="Self.ProfileMessageSessions" Multiplicity="1" />
+          <End Role="ProfileMessageUserSessions" Type="Self.ProfileMessageUserSessions" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileMessageSessions">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessageUserSessions">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfilePosts_AspNetUsers">
+          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
+          <End Role="ProfilePosts" Type="Self.ProfilePosts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUsers">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfilePosts">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="DB_A4B8F5_ToastDevModelStoreContainer">
+          <EntitySet Name="Area" EntityType="Self.Area" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUserLoginLogs" EntityType="Self.AspNetUserLoginLogs" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Club" EntityType="Self.Club" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClubEntityMap" EntityType="Self.ClubEntityMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ClubPositions" EntityType="Self.ClubPositions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="District" EntityType="Self.District" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Division" EntityType="Self.Division" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileAwardsMap" EntityType="Self.ProfileAwardsMap" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileBusinessPosition" EntityType="Self.ProfileBusinessPosition" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileComments" EntityType="Self.ProfileComments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileExternalNotifications" EntityType="Self.ProfileExternalNotifications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileExternalNotificationsType" EntityType="Self.ProfileExternalNotificationsType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileMessages" EntityType="Self.ProfileMessages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileMessageSessions" EntityType="Self.ProfileMessageSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileMessageUserSessions" EntityType="Self.ProfileMessageUserSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfilePosts" EntityType="Self.ProfilePosts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProfileMember" EntityType="Self.ProfileMember" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [ProfileMember].[MemberID] AS [MemberID], 
+    [ProfileMember].[ClubID] AS [ClubID], 
+    [ProfileMember].[PositionID] AS [PositionID], 
+    [ProfileMember].[Skills] AS [Skills], 
+    [ProfileMember].[UniversitiesID] AS [UniversitiesID], 
+    [ProfileMember].[UniversitiesRegionsID] AS [UniversitiesRegionsID], 
+    [ProfileMember].[UniversityMajorsID] AS [UniversityMajorsID], 
+    [ProfileMember].[UniversityDegreesID] AS [UniversityDegreesID], 
+    [ProfileMember].[UniversityCountryID] AS [UniversityCountryID], 
+    [ProfileMember].[UniversityStateID] AS [UniversityStateID], 
+    [ProfileMember].[UniversityAttending] AS [UniversityAttending], 
+    [ProfileMember].[GraduatesID] AS [GraduatesID], 
+    [ProfileMember].[GraduatesRegionsID] AS [GraduatesRegionsID], 
+    [ProfileMember].[GraduateMajorsID] AS [GraduateMajorsID], 
+    [ProfileMember].[GraduateDegreesID] AS [GraduateDegreesID], 
+    [ProfileMember].[GraduateCountryID] AS [GraduateCountryID], 
+    [ProfileMember].[GraduateStateID] AS [GraduateStateID], 
+    [ProfileMember].[GraduateAttending] AS [GraduateAttending], 
+    [ProfileMember].[CityID] AS [CityID], 
+    [ProfileMember].[UniversitySchoolGraduationDate] AS [UniversitySchoolGraduationDate], 
+    [ProfileMember].[GraduateSchoolGraduationDate] AS [GraduateSchoolGraduationDate], 
+    [ProfileMember].[ProfileCustomView] AS [ProfileCustomView], 
+    [ProfileMember].[About] AS [About], 
+    [ProfileMember].[ImageLink] AS [ImageLink], 
+    [ProfileMember].[BannerLink] AS [BannerLink], 
+    [ProfileMember].[ProfileStatus] AS [ProfileStatus], 
+    [ProfileMember].[ProfileInactiveDate] AS [ProfileInactiveDate], 
+    [ProfileMember].[TourShown] AS [TourShown], 
+    [ProfileMember].[UpdateDate] AS [UpdateDate]
+    FROM [dbo].[ProfileMember] AS [ProfileMember]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="vw_UserBasicInfo" EntityType="Self.vw_UserBasicInfo" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [vw_UserBasicInfo].[ID] AS [ID], 
+    [vw_UserBasicInfo].[Name] AS [Name], 
+    [vw_UserBasicInfo].[Gender] AS [Gender], 
+    [vw_UserBasicInfo].[Email] AS [Email], 
+    [vw_UserBasicInfo].[ProfileTableName] AS [ProfileTableName], 
+    [vw_UserBasicInfo].[MasterAccount] AS [MasterAccount], 
+    [vw_UserBasicInfo].[AdminAccount] AS [AdminAccount], 
+    [vw_UserBasicInfo].[ClubID] AS [ClubID], 
+    [vw_UserBasicInfo].[PositionID] AS [PositionID], 
+    [vw_UserBasicInfo].[ImageLink] AS [ImageLink], 
+    [vw_UserBasicInfo].[BannerLink] AS [BannerLink], 
+    [vw_UserBasicInfo].[ProfileStatus] AS [ProfileStatus], 
+    [vw_UserBasicInfo].[TourShown] AS [TourShown], 
+    [vw_UserBasicInfo].[UpdateDate] AS [UpdateDate], 
+    [vw_UserBasicInfo].[Position] AS [Position]
+    FROM [dbo].[vw_UserBasicInfo] AS [vw_UserBasicInfo]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK__Area__DivisionID__2EDAF651" Association="Self.FK__Area__DivisionID__2EDAF651">
+            <End Role="Division" EntitySet="Division" />
+            <End Role="Area" EntitySet="Area" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Club__AreaID__31B762FC" Association="Self.FK__Club__AreaID__31B762FC">
+            <End Role="Area" EntitySet="Area" />
+            <End Role="Club" EntitySet="Club" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Division__Distri__3587F3E0" Association="Self.FK__Division__Distri__3587F3E0">
+            <End Role="District" EntitySet="District" />
+            <End Role="Division" EntitySet="Division" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AspNetUserLoginLogs_AspNetUsers" Association="Self.FK_AspNetUserLoginLogs_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLoginLogs" EntitySet="AspNetUserLoginLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ClubEntityMap_Club" Association="Self.FK_ClubEntityMap_Club">
+            <End Role="Club" EntitySet="Club" />
+            <End Role="ClubEntityMap" EntitySet="ClubEntityMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileAwardsMap_AspNetUsers" Association="Self.FK_ProfileAwardsMap_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ProfileAwardsMap" EntitySet="ProfileAwardsMap" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileComments_AspNetUsers" Association="Self.FK_ProfileComments_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ProfileComments" EntitySet="ProfileComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMember_AspNetUsers" Association="Self.FK_ProfileMember_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ProfileMember" EntitySet="ProfileMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMember_ProfileBusinessPosition" Association="Self.FK_ProfileMember_ProfileBusinessPosition">
+            <End Role="ProfileBusinessPosition" EntitySet="ProfileBusinessPosition" />
+            <End Role="ProfileMember" EntitySet="ProfileMember" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessages_AspNetUsers" Association="Self.FK_ProfileMessages_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ProfileMessages" EntitySet="ProfileMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessages_AspNetUsers1" Association="Self.FK_ProfileMessages_AspNetUsers1">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ProfileMessages" EntitySet="ProfileMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessages_ProfileMessageSessions" Association="Self.FK_ProfileMessages_ProfileMessageSessions">
+            <End Role="ProfileMessageSessions" EntitySet="ProfileMessageSessions" />
+            <End Role="ProfileMessages" EntitySet="ProfileMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessageUserSessions_AspNetUsers" Association="Self.FK_ProfileMessageUserSessions_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ProfileMessageUserSessions" EntitySet="ProfileMessageUserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessageUserSessions_ProfileMessageSessions" Association="Self.FK_ProfileMessageUserSessions_ProfileMessageSessions">
+            <End Role="ProfileMessageSessions" EntitySet="ProfileMessageSessions" />
+            <End Role="ProfileMessageUserSessions" EntitySet="ProfileMessageUserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfilePosts_AspNetUsers" Association="Self.FK_ProfilePosts_AspNetUsers">
+            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
+            <End Role="ProfilePosts" EntitySet="ProfilePosts" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="DB_A4B8F5_ToastDevModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AspNetUserLoginLogs" EntityType="DB_A4B8F5_ToastDevModel.AspNetUserLoginLog" />
+          <EntitySet Name="AspNetUsers" EntityType="DB_A4B8F5_ToastDevModel.AspNetUser" />
+          <EntitySet Name="ProfileAwardsMaps" EntityType="DB_A4B8F5_ToastDevModel.ProfileAwardsMap" />
+          <EntitySet Name="ProfileBusinessPositions" EntityType="DB_A4B8F5_ToastDevModel.ProfileBusinessPosition" />
+          <EntitySet Name="ProfileComments" EntityType="DB_A4B8F5_ToastDevModel.ProfileComment" />
+          <EntitySet Name="ProfileExternalNotifications" EntityType="DB_A4B8F5_ToastDevModel.ProfileExternalNotification" />
+          <EntitySet Name="ProfileExternalNotificationsTypes" EntityType="DB_A4B8F5_ToastDevModel.ProfileExternalNotificationsType" />
+          <EntitySet Name="ProfileMessages" EntityType="DB_A4B8F5_ToastDevModel.ProfileMessage" />
+          <EntitySet Name="ProfileMessageSessions" EntityType="DB_A4B8F5_ToastDevModel.ProfileMessageSession" />
+          <EntitySet Name="ProfileMessageUserSessions" EntityType="DB_A4B8F5_ToastDevModel.ProfileMessageUserSession" />
+          <EntitySet Name="ProfilePosts" EntityType="DB_A4B8F5_ToastDevModel.ProfilePost" />
+          <AssociationSet Name="FK_AspNetUserLoginLogs_AspNetUsers" Association="DB_A4B8F5_ToastDevModel.FK_AspNetUserLoginLogs_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="AspNetUserLoginLog" EntitySet="AspNetUserLoginLogs" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileAwardsMap_AspNetUsers" Association="DB_A4B8F5_ToastDevModel.FK_ProfileAwardsMap_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ProfileAwardsMap" EntitySet="ProfileAwardsMaps" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileComments_AspNetUsers" Association="DB_A4B8F5_ToastDevModel.FK_ProfileComments_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ProfileComment" EntitySet="ProfileComments" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessages_AspNetUsers" Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ProfileMessage" EntitySet="ProfileMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessages_AspNetUsers1" Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers1">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ProfileMessage" EntitySet="ProfileMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessageUserSessions_AspNetUsers" Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ProfileMessageUserSession" EntitySet="ProfileMessageUserSessions" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfilePosts_AspNetUsers" Association="DB_A4B8F5_ToastDevModel.FK_ProfilePosts_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ProfilePost" EntitySet="ProfilePosts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessages_ProfileMessageSessions" Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_ProfileMessageSessions">
+            <End Role="ProfileMessageSession" EntitySet="ProfileMessageSessions" />
+            <End Role="ProfileMessage" EntitySet="ProfileMessages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMessageUserSessions_ProfileMessageSessions" Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_ProfileMessageSessions">
+            <End Role="ProfileMessageSession" EntitySet="ProfileMessageSessions" />
+            <End Role="ProfileMessageUserSession" EntitySet="ProfileMessageUserSessions" />
+          </AssociationSet>
+          <EntitySet Name="Areas" EntityType="DB_A4B8F5_ToastDevModel.Area" />
+          <EntitySet Name="Clubs" EntityType="DB_A4B8F5_ToastDevModel.Club" />
+          <EntitySet Name="ClubPositions" EntityType="DB_A4B8F5_ToastDevModel.ClubPosition" />
+          <EntitySet Name="Districts" EntityType="DB_A4B8F5_ToastDevModel.District" />
+          <EntitySet Name="Divisions" EntityType="DB_A4B8F5_ToastDevModel.Division" />
+          <AssociationSet Name="FK__Area__DivisionID__2EDAF651" Association="DB_A4B8F5_ToastDevModel.FK__Area__DivisionID__2EDAF651">
+            <End Role="Division" EntitySet="Divisions" />
+            <End Role="Area" EntitySet="Areas" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Club__AreaID__31B762FC" Association="DB_A4B8F5_ToastDevModel.FK__Club__AreaID__31B762FC">
+            <End Role="Area" EntitySet="Areas" />
+            <End Role="Club" EntitySet="Clubs" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Division__Distri__3587F3E0" Association="DB_A4B8F5_ToastDevModel.FK__Division__Distri__3587F3E0">
+            <End Role="District" EntitySet="Districts" />
+            <End Role="Division" EntitySet="Divisions" />
+          </AssociationSet>
+          <EntitySet Name="ClubEntityMaps" EntityType="DB_A4B8F5_ToastDevModel.ClubEntityMap" />
+          <AssociationSet Name="FK_ClubEntityMap_Club" Association="DB_A4B8F5_ToastDevModel.FK_ClubEntityMap_Club">
+            <End Role="Club" EntitySet="Clubs" />
+            <End Role="ClubEntityMap" EntitySet="ClubEntityMaps" />
+          </AssociationSet>
+          <EntitySet Name="ProfileMembers" EntityType="DB_A4B8F5_ToastDevModel.ProfileMember" />
+          <EntitySet Name="vw_UserBasicInfo" EntityType="DB_A4B8F5_ToastDevModel.vw_UserBasicInfo" />
+          <AssociationSet Name="FK_ProfileMember_AspNetUsers" Association="DB_A4B8F5_ToastDevModel.FK_ProfileMember_AspNetUsers">
+            <End Role="AspNetUser" EntitySet="AspNetUsers" />
+            <End Role="ProfileMember" EntitySet="ProfileMembers" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProfileMember_ProfileBusinessPosition" Association="DB_A4B8F5_ToastDevModel.FK_ProfileMember_ProfileBusinessPosition">
+            <End Role="ProfileBusinessPosition" EntitySet="ProfileBusinessPositions" />
+            <End Role="ProfileMember" EntitySet="ProfileMembers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="AspNetUserLoginLog">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Device" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="JavascriptVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="IsMobileDevice" Type="Boolean" />
+          <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LogoffDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="DB_A4B8F5_ToastDevModel.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUserLoginLog" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="AspNetUser">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="FirstName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="MiddleName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastName" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="DateOfBirth" Type="DateTime" Precision="0" />
+          <Property Name="IPAddress" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddressCountry" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IPAddressCity" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Delinquent" Type="Boolean" Nullable="false" />
+          <Property Name="LifetimeValue" Type="Decimal" Precision="18" Scale="2" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="DemoAccount" Type="Boolean" Nullable="false" />
+          <Property Name="MasterAccount" Type="Boolean" Nullable="false" />
+          <Property Name="AdminAccount" Type="Boolean" Nullable="false" />
+          <Property Name="ProfileAdminTable" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileTableName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="TreasuryTableName_TBD_" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="RegistrationCode" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileUpdated" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PhoneSMSAllowed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" Precision="3" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="RegistrationDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUserLoginLog" Relationship="DB_A4B8F5_ToastDevModel.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserLoginLog" />
+          <NavigationProperty Name="ProfileAwardsMaps" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileAwardsMap_AspNetUsers" FromRole="AspNetUser" ToRole="ProfileAwardsMap" />
+          <NavigationProperty Name="ProfileComments" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileComments_AspNetUsers" FromRole="AspNetUser" ToRole="ProfileComment" />
+          <NavigationProperty Name="ProfileMessages" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers" FromRole="AspNetUser" ToRole="ProfileMessage" />
+          <NavigationProperty Name="ProfileMessages1" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers1" FromRole="AspNetUser" ToRole="ProfileMessage" />
+          <NavigationProperty Name="ProfileMessageUserSessions" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_AspNetUsers" FromRole="AspNetUser" ToRole="ProfileMessageUserSession" />
+          <NavigationProperty Name="ProfilePosts" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfilePosts_AspNetUsers" FromRole="AspNetUser" ToRole="ProfilePost" />
+          <NavigationProperty Name="ProfileMembers" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMember_AspNetUsers" FromRole="AspNetUser" ToRole="ProfileMember" />
+        </EntityType>
+        <EntityType Name="ProfileAwardsMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="AwardTitle" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ImageLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DateAcquired" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="DateUploaded" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileAwardsMap_AspNetUsers" FromRole="ProfileAwardsMap" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="ProfileBusinessPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Custom" Type="Boolean" Nullable="false" />
+          <Property Name="Valid" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ProfileMembers" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMember_ProfileBusinessPosition" FromRole="ProfileBusinessPosition" ToRole="ProfileMember" />
+        </EntityType>
+        <EntityType Name="ProfileComment">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ParentPostID" Type="Int32" Nullable="false" />
+          <Property Name="MemberID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="ImageLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DatePosted" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileComments_AspNetUsers" FromRole="ProfileComment" ToRole="AspNetUser" />
+        </EntityType>
+        <EntityType Name="ProfileExternalNotification">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TestCaseID" Type="Int32" Nullable="false" />
+          <Property Name="NotificationTypeID" Type="Int32" Nullable="false" />
+          <Property Name="TestCase" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Unread" Type="Boolean" Nullable="false" />
+          <Property Name="Processed" Type="Boolean" Nullable="false" />
+          <Property Name="EventDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
+        </EntityType>
+        <EntityType Name="ProfileExternalNotificationsType">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Type" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProfileMessage">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="SenderID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ReceiverID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="SenderName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="SenderImageLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Unread" Type="Boolean" />
+          <Property Name="Date" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers" FromRole="ProfileMessage" ToRole="AspNetUser" />
+          <NavigationProperty Name="AspNetUser1" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers1" FromRole="ProfileMessage" ToRole="AspNetUser" />
+          <NavigationProperty Name="ProfileMessageSession" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_ProfileMessageSessions" FromRole="ProfileMessage" ToRole="ProfileMessageSession" />
+        </EntityType>
+        <EntityType Name="ProfileMessageSession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="DateCreated" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="ProfileMessages" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_ProfileMessageSessions" FromRole="ProfileMessageSession" ToRole="ProfileMessage" />
+          <NavigationProperty Name="ProfileMessageUserSessions" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_ProfileMessageSessions" FromRole="ProfileMessageSession" ToRole="ProfileMessageUserSession" />
+        </EntityType>
+        <EntityType Name="ProfileMessageUserSession">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SessionID" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="AspNetUser" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_AspNetUsers" FromRole="ProfileMessageUserSession" ToRole="AspNetUser" />
+          <NavigationProperty Name="ProfileMessageSession" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_ProfileMessageSessions" FromRole="ProfileMessageUserSession" ToRole="ProfileMessageSession" />
+        </EntityType>
+        <EntityType Name="ProfilePost">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MemberID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MessageHeading" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="MessageImageLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="Private" Type="Boolean" />
+          <Property Name="Hidden" Type="Boolean" />
+          <Property Name="ImageLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="DatePosted" Type="DateTimeOffset" Nullable="false" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfilePosts_AspNetUsers" FromRole="ProfilePost" ToRole="AspNetUser" />
+        </EntityType>
+        <Association Name="FK_AspNetUserLoginLogs_AspNetUsers">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUserLoginLog" Role="AspNetUserLoginLog" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="AspNetUserLoginLog">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileAwardsMap_AspNetUsers">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileAwardsMap" Role="ProfileAwardsMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileAwardsMap">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileComments_AspNetUsers">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileComment" Role="ProfileComment" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileComment">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessages_AspNetUsers">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMessage" Role="ProfileMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessage">
+              <PropertyRef Name="SenderID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessages_AspNetUsers1">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMessage" Role="ProfileMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessage">
+              <PropertyRef Name="ReceiverID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessageUserSessions_AspNetUsers">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMessageUserSession" Role="ProfileMessageUserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessageUserSession">
+              <PropertyRef Name="UserID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfilePosts_AspNetUsers">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfilePost" Role="ProfilePost" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfilePost">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessages_ProfileMessageSessions">
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMessageSession" Role="ProfileMessageSession" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMessage" Role="ProfileMessage" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileMessageSession">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessage">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMessageUserSessions_ProfileMessageSessions">
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMessageSession" Role="ProfileMessageSession" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMessageUserSession" Role="ProfileMessageUserSession" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileMessageSession">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMessageUserSession">
+              <PropertyRef Name="SessionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Area">
+          <Key>
+            <PropertyRef Name="AreaID" />
+          </Key>
+          <Property Name="AreaID" Type="Int32" Nullable="false" />
+          <Property Name="DivisionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Division" Relationship="DB_A4B8F5_ToastDevModel.FK__Area__DivisionID__2EDAF651" FromRole="Area" ToRole="Division" />
+          <NavigationProperty Name="Clubs" Relationship="DB_A4B8F5_ToastDevModel.FK__Club__AreaID__31B762FC" FromRole="Area" ToRole="Club" />
+        </EntityType>
+        <EntityType Name="Club">
+          <Key>
+            <PropertyRef Name="ClubID" />
+          </Key>
+          <Property Name="ClubID" Type="Int32" Nullable="false" />
+          <Property Name="AreaID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Area" Relationship="DB_A4B8F5_ToastDevModel.FK__Club__AreaID__31B762FC" FromRole="Club" ToRole="Area" />
+          <NavigationProperty Name="ClubEntityMaps" Relationship="DB_A4B8F5_ToastDevModel.FK_ClubEntityMap_Club" FromRole="Club" ToRole="ClubEntityMap" />
+        </EntityType>
+        <EntityType Name="ClubPosition">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" />
+          <Property Name="Position" Type="String" Nullable="false" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="District">
+          <Key>
+            <PropertyRef Name="DistrictID" />
+          </Key>
+          <Property Name="DistrictID" Type="Int32" Nullable="false" />
+          <Property Name="RegionID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Divisions" Relationship="DB_A4B8F5_ToastDevModel.FK__Division__Distri__3587F3E0" FromRole="District" ToRole="Division" />
+        </EntityType>
+        <EntityType Name="Division">
+          <Key>
+            <PropertyRef Name="DivisionID" />
+          </Key>
+          <Property Name="DivisionID" Type="Int32" Nullable="false" />
+          <Property Name="DistrictID" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Areas" Relationship="DB_A4B8F5_ToastDevModel.FK__Area__DivisionID__2EDAF651" FromRole="Division" ToRole="Area" />
+          <NavigationProperty Name="District" Relationship="DB_A4B8F5_ToastDevModel.FK__Division__Distri__3587F3E0" FromRole="Division" ToRole="District" />
+        </EntityType>
+        <Association Name="FK__Area__DivisionID__2EDAF651">
+          <End Type="DB_A4B8F5_ToastDevModel.Division" Role="Division" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.Area" Role="Area" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Division">
+              <PropertyRef Name="DivisionID" />
+            </Principal>
+            <Dependent Role="Area">
+              <PropertyRef Name="DivisionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Club__AreaID__31B762FC">
+          <End Type="DB_A4B8F5_ToastDevModel.Area" Role="Area" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.Club" Role="Club" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Area">
+              <PropertyRef Name="AreaID" />
+            </Principal>
+            <Dependent Role="Club">
+              <PropertyRef Name="AreaID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Division__Distri__3587F3E0">
+          <End Type="DB_A4B8F5_ToastDevModel.District" Role="District" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.Division" Role="Division" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="District">
+              <PropertyRef Name="DistrictID" />
+            </Principal>
+            <Dependent Role="Division">
+              <PropertyRef Name="DistrictID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ClubEntityMap">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ClubID" Type="Int32" Nullable="false" />
+          <Property Name="ClubTable" Type="String" Nullable="false" MaxLength="64" FixedLength="true" Unicode="true" />
+          <NavigationProperty Name="Club" Relationship="DB_A4B8F5_ToastDevModel.FK_ClubEntityMap_Club" FromRole="ClubEntityMap" ToRole="Club" />
+        </EntityType>
+        <Association Name="FK_ClubEntityMap_Club">
+          <End Type="DB_A4B8F5_ToastDevModel.Club" Role="Club" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ClubEntityMap" Role="ClubEntityMap" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Club">
+              <PropertyRef Name="ClubID" />
+            </Principal>
+            <Dependent Role="ClubEntityMap">
+              <PropertyRef Name="ClubID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="ProfileMember">
+          <Key>
+            <PropertyRef Name="MemberID" />
+            <PropertyRef Name="TourShown" />
+          </Key>
+          <Property Name="MemberID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClubID" Type="Int32" />
+          <Property Name="PositionID" Type="Int32" />
+          <Property Name="Skills" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UniversitiesID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UniversitiesRegionsID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UniversityMajorsID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UniversityDegreesID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UniversityCountryID" Type="Int32" />
+          <Property Name="UniversityStateID" Type="Int32" />
+          <Property Name="UniversityAttending" Type="Boolean" />
+          <Property Name="GraduatesID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GraduatesRegionsID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GraduateMajorsID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GraduateDegreesID" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="GraduateCountryID" Type="Int32" />
+          <Property Name="GraduateStateID" Type="Int32" />
+          <Property Name="GraduateAttending" Type="Boolean" />
+          <Property Name="CityID" Type="Int32" />
+          <Property Name="UniversitySchoolGraduationDate" Type="DateTime" Precision="0" />
+          <Property Name="GraduateSchoolGraduationDate" Type="DateTime" Precision="0" />
+          <Property Name="ProfileCustomView" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="About" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ImageLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BannerLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileStatus" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileInactiveDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="TourShown" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMember_AspNetUsers" FromRole="ProfileMember" ToRole="AspNetUser" />
+          <NavigationProperty Name="ProfileBusinessPosition" Relationship="DB_A4B8F5_ToastDevModel.FK_ProfileMember_ProfileBusinessPosition" FromRole="ProfileMember" ToRole="ProfileBusinessPosition" />
+        </EntityType>
+        <EntityType Name="vw_UserBasicInfo">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ClubID" />
+            <PropertyRef Name="TourShown" />
+          </Key>
+          <Property Name="ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="Name" Type="String" MaxLength="511" FixedLength="false" Unicode="true" />
+          <Property Name="Gender" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileTableName" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="MasterAccount" Type="Boolean" />
+          <Property Name="AdminAccount" Type="Boolean" />
+          <Property Name="ClubID" Type="Int32" Nullable="false" />
+          <Property Name="PositionID" Type="Int32" />
+          <Property Name="ImageLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="BannerLink" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="ProfileStatus" Type="String" MaxLength="24" FixedLength="false" Unicode="true" />
+          <Property Name="TourShown" Type="Boolean" Nullable="false" />
+          <Property Name="UpdateDate" Type="DateTimeOffset" Precision="7" />
+          <Property Name="Position" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <Association Name="FK_ProfileMember_AspNetUsers">
+          <End Type="DB_A4B8F5_ToastDevModel.AspNetUser" Role="AspNetUser" Multiplicity="1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMember" Role="ProfileMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AspNetUser">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMember">
+              <PropertyRef Name="MemberID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProfileMember_ProfileBusinessPosition">
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileBusinessPosition" Role="ProfileBusinessPosition" Multiplicity="0..1" />
+          <End Type="DB_A4B8F5_ToastDevModel.ProfileMember" Role="ProfileMember" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ProfileBusinessPosition">
+              <PropertyRef Name="ID" />
+            </Principal>
+            <Dependent Role="ProfileMember">
+              <PropertyRef Name="PositionID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="DB_A4B8F5_ToastDevModelStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="AspNetUserLoginLogs">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.AspNetUserLoginLog">
+              <MappingFragment StoreEntitySet="AspNetUserLoginLogs">
+                <ScalarProperty Name="LogoffDateTime" ColumnName="LogoffDateTime" />
+                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
+                <ScalarProperty Name="JavascriptVersion" ColumnName="JavascriptVersion" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUsers">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.AspNetUser">
+              <MappingFragment StoreEntitySet="AspNetUsers">
+                <ScalarProperty Name="RegistrationDate" ColumnName="RegistrationDate" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneSMSAllowed" ColumnName="PhoneSMSAllowed" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="ProfileUpdated" ColumnName="ProfileUpdated" />
+                <ScalarProperty Name="RegistrationCode" ColumnName="RegistrationCode" />
+                <ScalarProperty Name="TreasuryTableName_TBD_" ColumnName="TreasuryTableName(TBD)" />
+                <ScalarProperty Name="ProfileTableName" ColumnName="ProfileTableName" />
+                <ScalarProperty Name="ProfileAdminTable" ColumnName="ProfileAdminTable" />
+                <ScalarProperty Name="AdminAccount" ColumnName="AdminAccount" />
+                <ScalarProperty Name="MasterAccount" ColumnName="MasterAccount" />
+                <ScalarProperty Name="DemoAccount" ColumnName="DemoAccount" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="LifetimeValue" ColumnName="LifetimeValue" />
+                <ScalarProperty Name="Delinquent" ColumnName="Delinquent" />
+                <ScalarProperty Name="IPAddressCity" ColumnName="IPAddressCity" />
+                <ScalarProperty Name="IPAddressCountry" ColumnName="IPAddressCountry" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="DateOfBirth" ColumnName="DateOfBirth" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="LastName" ColumnName="LastName" />
+                <ScalarProperty Name="MiddleName" ColumnName="MiddleName" />
+                <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileAwardsMaps">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileAwardsMap">
+              <MappingFragment StoreEntitySet="ProfileAwardsMap">
+                <ScalarProperty Name="DateUploaded" ColumnName="DateUploaded" />
+                <ScalarProperty Name="DateAcquired" ColumnName="DateAcquired" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="AwardTitle" ColumnName="AwardTitle" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileBusinessPositions">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileBusinessPosition">
+              <MappingFragment StoreEntitySet="ProfileBusinessPosition">
+                <ScalarProperty Name="Valid" ColumnName="Valid" />
+                <ScalarProperty Name="Custom" ColumnName="Custom" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileComments">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileComment">
+              <MappingFragment StoreEntitySet="ProfileComments">
+                <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ParentPostID" ColumnName="ParentPostID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileExternalNotifications">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileExternalNotification">
+              <MappingFragment StoreEntitySet="ProfileExternalNotifications">
+                <ScalarProperty Name="EventDate" ColumnName="EventDate" />
+                <ScalarProperty Name="Processed" ColumnName="Processed" />
+                <ScalarProperty Name="Unread" ColumnName="Unread" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="TestCase" ColumnName="TestCase" />
+                <ScalarProperty Name="NotificationTypeID" ColumnName="NotificationTypeID" />
+                <ScalarProperty Name="TestCaseID" ColumnName="TestCaseID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileExternalNotificationsTypes">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileExternalNotificationsType">
+              <MappingFragment StoreEntitySet="ProfileExternalNotificationsType">
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileMessages">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileMessage">
+              <MappingFragment StoreEntitySet="ProfileMessages">
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="Unread" ColumnName="Unread" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="SenderImageLink" ColumnName="SenderImageLink" />
+                <ScalarProperty Name="SenderName" ColumnName="SenderName" />
+                <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+                <ScalarProperty Name="SenderID" ColumnName="SenderID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileMessageSessions">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileMessageSession">
+              <MappingFragment StoreEntitySet="ProfileMessageSessions">
+                <ScalarProperty Name="DateCreated" ColumnName="DateCreated" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileMessageUserSessions">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileMessageUserSession">
+              <MappingFragment StoreEntitySet="ProfileMessageUserSessions">
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="SessionID" ColumnName="SessionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfilePosts">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfilePost">
+              <MappingFragment StoreEntitySet="ProfilePosts">
+                <ScalarProperty Name="DatePosted" ColumnName="DatePosted" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+                <ScalarProperty Name="Private" ColumnName="Private" />
+                <ScalarProperty Name="MessageImageLink" ColumnName="MessageImageLink" />
+                <ScalarProperty Name="MessageHeading" ColumnName="MessageHeading" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Areas">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.Area">
+              <MappingFragment StoreEntitySet="Area">
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Clubs">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.Club">
+              <MappingFragment StoreEntitySet="Club">
+                <ScalarProperty Name="AreaID" ColumnName="AreaID" />
+                <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClubPositions">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ClubPosition">
+              <MappingFragment StoreEntitySet="ClubPositions">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Districts">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.District">
+              <MappingFragment StoreEntitySet="District">
+                <ScalarProperty Name="RegionID" ColumnName="RegionID" />
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Divisions">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.Division">
+              <MappingFragment StoreEntitySet="Division">
+                <ScalarProperty Name="DistrictID" ColumnName="DistrictID" />
+                <ScalarProperty Name="DivisionID" ColumnName="DivisionID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ClubEntityMaps">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ClubEntityMap">
+              <MappingFragment StoreEntitySet="ClubEntityMap">
+                <ScalarProperty Name="ClubTable" ColumnName="ClubTable" />
+                <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProfileMembers">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.ProfileMember">
+              <MappingFragment StoreEntitySet="ProfileMember">
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="TourShown" ColumnName="TourShown" />
+                <ScalarProperty Name="ProfileInactiveDate" ColumnName="ProfileInactiveDate" />
+                <ScalarProperty Name="ProfileStatus" ColumnName="ProfileStatus" />
+                <ScalarProperty Name="BannerLink" ColumnName="BannerLink" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="About" ColumnName="About" />
+                <ScalarProperty Name="ProfileCustomView" ColumnName="ProfileCustomView" />
+                <ScalarProperty Name="GraduateSchoolGraduationDate" ColumnName="GraduateSchoolGraduationDate" />
+                <ScalarProperty Name="UniversitySchoolGraduationDate" ColumnName="UniversitySchoolGraduationDate" />
+                <ScalarProperty Name="CityID" ColumnName="CityID" />
+                <ScalarProperty Name="GraduateAttending" ColumnName="GraduateAttending" />
+                <ScalarProperty Name="GraduateStateID" ColumnName="GraduateStateID" />
+                <ScalarProperty Name="GraduateCountryID" ColumnName="GraduateCountryID" />
+                <ScalarProperty Name="GraduateDegreesID" ColumnName="GraduateDegreesID" />
+                <ScalarProperty Name="GraduateMajorsID" ColumnName="GraduateMajorsID" />
+                <ScalarProperty Name="GraduatesRegionsID" ColumnName="GraduatesRegionsID" />
+                <ScalarProperty Name="GraduatesID" ColumnName="GraduatesID" />
+                <ScalarProperty Name="UniversityAttending" ColumnName="UniversityAttending" />
+                <ScalarProperty Name="UniversityStateID" ColumnName="UniversityStateID" />
+                <ScalarProperty Name="UniversityCountryID" ColumnName="UniversityCountryID" />
+                <ScalarProperty Name="UniversityDegreesID" ColumnName="UniversityDegreesID" />
+                <ScalarProperty Name="UniversityMajorsID" ColumnName="UniversityMajorsID" />
+                <ScalarProperty Name="UniversitiesRegionsID" ColumnName="UniversitiesRegionsID" />
+                <ScalarProperty Name="UniversitiesID" ColumnName="UniversitiesID" />
+                <ScalarProperty Name="Skills" ColumnName="Skills" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+                <ScalarProperty Name="MemberID" ColumnName="MemberID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="vw_UserBasicInfo">
+            <EntityTypeMapping TypeName="DB_A4B8F5_ToastDevModel.vw_UserBasicInfo">
+              <MappingFragment StoreEntitySet="vw_UserBasicInfo">
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="UpdateDate" ColumnName="UpdateDate" />
+                <ScalarProperty Name="TourShown" ColumnName="TourShown" />
+                <ScalarProperty Name="ProfileStatus" ColumnName="ProfileStatus" />
+                <ScalarProperty Name="BannerLink" ColumnName="BannerLink" />
+                <ScalarProperty Name="ImageLink" ColumnName="ImageLink" />
+                <ScalarProperty Name="PositionID" ColumnName="PositionID" />
+                <ScalarProperty Name="ClubID" ColumnName="ClubID" />
+                <ScalarProperty Name="AdminAccount" ColumnName="AdminAccount" />
+                <ScalarProperty Name="MasterAccount" ColumnName="MasterAccount" />
+                <ScalarProperty Name="ProfileTableName" ColumnName="ProfileTableName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Gender" ColumnName="Gender" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

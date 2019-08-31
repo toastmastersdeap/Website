@@ -17,7 +17,7 @@ namespace Toast.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Club()
         {
-            this.Goals = new HashSet<Goal>();
+            this.ClubEntityMaps = new HashSet<ClubEntityMap>();
         }
     
         public int ClubID { get; set; }
@@ -25,6 +25,6 @@ namespace Toast.Models
     
         public virtual Area Area { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Goal> Goals { get; set; }
+        public virtual ICollection<ClubEntityMap> ClubEntityMaps { get; set; }
     }
 }

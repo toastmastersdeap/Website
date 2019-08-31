@@ -1326,7 +1326,7 @@ a.list-group-item.active:focus {
 }
 
 .hpanel.hblue .panel-body {
-    border-top: 2px solid #3498db
+    border-top: 2px solid #34495e
 }
 
 .hpanel.hyellow .panel-body {
@@ -1752,6 +1752,13 @@ h6 {
     .chat-users,
     .chat-statistic {
         margin-left: 0
+    }
+}
+
+@media(max-width:600px) {
+    .chat-users,
+    .chat-statistic {
+        display:none;
     }
 }
 
@@ -2259,17 +2266,23 @@ ul.h-list {
 
 .login-container {
     max-width: 420px;
-    margin: 6% auto 3% auto;
+    margin: 35px auto 10px auto;
     border-radius: 4px;
     box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
 }
 
 .register-container {
     max-width: 720px;
-    margin: 6% auto 3% auto;
+    margin: 35px auto 10px auto;
     border-radius: 4px;
     box-shadow: 5px 5px 25px 0 rgba(46, 61, 73, 0.2);
 }
+
+    .register-container .hpanel,
+    .login-container .hpanel {
+        box-shadow: none;
+    }
+
 
 .lock-container {
     max-width: 420px;
@@ -2305,9 +2318,6 @@ ul.h-list {
 }
 
 @media(max-width:720px) {
-    .register-container {
-        margin: auto 10px;
-    }
 
     .lock-container {
         padding-top: 15%;
@@ -2866,8 +2876,8 @@ ul.h-list {
     box-sizing: border-box
 }
 
-.icheckbox_square-green,
-.iradio_square-green {
+.icheckbox_square-blue,
+.iradio_square-blue {
     display: inline-block;
     *display: inline;
     vertical-align: middle;
@@ -2875,57 +2885,57 @@ ul.h-list {
     padding: 0;
     width: 22px;
     height: 22px;
-    background: url("img/green.png") no-repeat;
+    background: url("img/blue.png") no-repeat;
     border: 0;
     cursor: pointer
 }
 
-.icheckbox_square-green {
+.icheckbox_square-blue {
     background-position: 0 0
 }
 
-    .icheckbox_square-green.hover {
+    .icheckbox_square-blue.hover {
         background-position: -24px 0
     }
 
-    .icheckbox_square-green.checked {
+    .icheckbox_square-blue.checked {
         background-position: -48px 0
     }
 
-    .icheckbox_square-green.disabled {
+    .icheckbox_square-blue.disabled {
         background-position: -72px 0;
         cursor: default
     }
 
-    .icheckbox_square-green.checked.disabled {
+    .icheckbox_square-blue.checked.disabled {
         background-position: -96px 0
     }
 
-.iradio_square-green {
+.iradio_square-blue {
     background-position: -120px 0
 }
 
-    .iradio_square-green.hover {
+    .iradio_square-blue.hover {
         background-position: -144px 0
     }
 
-    .iradio_square-green.checked {
+    .iradio_square-blue.checked {
         background-position: -168px 0
     }
 
-    .iradio_square-green.disabled {
+    .iradio_square-blue.disabled {
         background-position: -192px 0;
         cursor: default
     }
 
-    .iradio_square-green.checked.disabled {
+    .iradio_square-blue.checked.disabled {
         background-position: -216px 0
     }
 
 @media(-o-min-device-pixel-ratio:5/4), (-webkit-min-device-pixel-ratio:1.25), (min-resolution:120dpi) {
-    .icheckbox_square-green,
-    .iradio_square-green {
-        background-image: url("img/green@2x.png");
+    .icheckbox_square-blue,
+    .iradio_square-blue {
+        background-image: url("img/blue@2x.png");
         -webkit-background-size: 240px 24px;
         background-size: 240px 24px
     }
@@ -2955,6 +2965,10 @@ ul.h-list {
 
 .bg-light {
     background-color: #f7f9fa
+}
+
+.bg-transparent {
+    background-color: transparent;
 }
 
 .border-top {
@@ -3733,7 +3747,7 @@ body.modal-open {
 }
 
 #logo {
-    float: left;
+    margin: 20px auto 10px auto;
     width: 260px;
     padding: 10px;
     text-align: center;
@@ -4092,7 +4106,7 @@ a {
 @media(max-width:768px) {
     .navbar-form-custom,
     .navbar-right,
-    #logo {
+    #header #logo {
         display: none
     }
 
@@ -4502,7 +4516,7 @@ body.light-skin {
     }
 
     body.light-skin .hpanel.hblue .panel-body {
-        border-top: 2px solid #3498db
+        border-top: 2px solid #34495e
     }
 
     body.light-skin .hpanel.hyellow .panel-body {

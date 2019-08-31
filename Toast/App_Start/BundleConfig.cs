@@ -30,7 +30,7 @@ namespace Toast
                       "~/Content/style.css", new CssRewriteUrlTransform()));
 
             // Landing style
-            bundles.Add(new StyleBundle("~/bundles/landing/css").Include(
+            bundles.Add(new StyleBundle("~/bundles/toastyStyle/css").Include(
                       "~/Content/Site.css"));
 
             // Toasty script

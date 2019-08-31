@@ -23,5 +23,9 @@ namespace Toast.Models
         public string Message { get; set; }
         public Nullable<bool> Unread { get; set; }
         public System.DateTimeOffset Date { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual AspNetUser AspNetUser1 { get; set; }
+        public virtual ProfileMessageSession ProfileMessageSession { get; set; }
     }
 }

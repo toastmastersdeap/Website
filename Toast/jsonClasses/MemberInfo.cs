@@ -9,7 +9,7 @@ namespace Toast.jsonClasses
       {
          public string Name { get; set; }
          public string Email { get; set; }
-         public string Entity { get; set; }
+         public string Club { get; set; }
          public string Position { get; set; }
          public string UnreadMessagesCount { get; set; }
 

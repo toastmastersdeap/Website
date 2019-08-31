@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="75d6229ee4704b1f9df20b2cefee3030" Name="Diagram1" ZoomLevel="86">
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.AspNetUserLoginLog" Width="1.875" PointX="0.75" PointY="8.625" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.AspNetUser" Width="1.875" PointX="0.75" PointY="12" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileAwardsMap" Width="1.875" PointX="10.625" PointY="20.5" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileBusinessPosition" Width="1.875" PointX="10.625" PointY="10.375" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileComment" Width="1.875" PointX="5.25" PointY="18.875" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileExternalNotification" Width="2.125" PointX="4.25" PointY="9.25" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileExternalNotificationsType" Width="2.625" PointX="7.5" PointY="9.25" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileMessage" Width="1.875" PointX="5.25" PointY="14.875" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileMessageSession" Width="1.875" PointX="2.875" PointY="14.875" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileMessageUserSession" Width="2.25" PointX="7.75" PointY="14.875" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfilePost" Width="1.875" PointX="5.25" PointY="22.25" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_AspNetUserLoginLogs_AspNetUsers" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileAwardsMap_AspNetUsers" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileComments_AspNetUsers" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_AspNetUsers1" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_AspNetUsers" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfilePosts_AspNetUsers" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessages_ProfileMessageSessions" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileMessageUserSessions_ProfileMessageSessions" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.Area" Width="1.5" PointX="10.375" PointY="1" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.Club" Width="1.5" PointX="12.625" PointY="1" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ClubPosition" Width="1.5" PointX="12.5" PointY="3.5" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.District" Width="1.5" PointX="5.875" PointY="1" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.Division" Width="1.5" PointX="8.125" PointY="1" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK__Area__DivisionID__2EDAF651" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK__Club__AreaID__31B762FC" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK__Division__Distri__3587F3E0" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ClubEntityMap" Width="1.5" PointX="14.875" PointY="1" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ClubEntityMap_Club" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.ProfileMember" Width="2" PointX="13.625" PointY="12" />
+        <EntityTypeShape EntityType="DB_A4B8F5_ToastDevModel.vw_UserBasicInfo" Width="2" PointX="0.75" PointY="0.75" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileMember_AspNetUsers" />
+        <AssociationConnector Association="DB_A4B8F5_ToastDevModel.FK_ProfileMember_ProfileBusinessPosition" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

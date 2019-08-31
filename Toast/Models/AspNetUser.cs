@@ -14,12 +14,6 @@ namespace Toast.Models
     
     public partial class AspNetUser
     {
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
-        public AspNetUser()
-        {
-            this.AspNetUserExceptionLogs = new HashSet<AspNetUserExceptionLog>();
-        }
-    
         public string ID { get; set; }
         public string UserName { get; set; }
         public string FirstName { get; set; }
@@ -53,8 +47,6 @@ namespace Toast.Models
         public int AccessFailedCount { get; set; }
         public System.DateTimeOffset RegistrationDate { get; set; }
     
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<AspNetUserExceptionLog> AspNetUserExceptionLogs { get; set; }
         public virtual AspNetUserLoginLog AspNetUserLoginLog { get; set; }
     }
 }

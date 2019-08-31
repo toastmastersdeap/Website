@@ -6,7 +6,7 @@
     <edmx:StorageModels>
     <Schema Namespace="Toast_DevModel1.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Toast_Dev.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A4B8F5_ToastDev.dbo.AspNetRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetRoles">
           <Key>
             <PropertyRef Name="ID" />
@@ -17,10 +17,10 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetRoles' does not have a primary
         </EntityType>
         <EntityType Name="AspNetUserClaims">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar(max)" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar(max)" />
           <Property Name="ClaimType" Type="nvarchar(max)" />
           <Property Name="ClaimValue" Type="nvarchar(max)" />
         </EntityType>
@@ -41,6 +41,8 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetRoles' does not have a primary
           <Property Name="City" Type="nvarchar" MaxLength="64" />
           <Property Name="DateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
         </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A4B8F5_ToastDev.dbo.AspNetUserLoginLogs' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserLoginLogs">
           <Key>
             <PropertyRef Name="UserID" />
@@ -59,14 +61,14 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetRoles' does not have a primary
           <Key>
             <PropertyRef Name="LoginProvider" />
             <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserID" />
           </Key>
           <Property Name="LoginProvider" Type="nvarchar" MaxLength="128" Nullable="false" />
           <Property Name="ProviderKey" Type="nvarchar" MaxLength="128" Nullable="false" />
-          <Property Name="UserId" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserID" Type="nvarchar" MaxLength="128" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Toast_Dev.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A4B8F5_ToastDev.dbo.AspNetUserRoles' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUserRoles">
           <Key>
             <PropertyRef Name="UserID" />
@@ -113,7 +115,7 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUserRoles' does not have a pri
           <Property Name="RegistrationDate" Type="datetimeoffset" Precision="7" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+warning 6002: The table/view 'DB_A4B8F5_ToastDev.dbo.AspNetUsersAttempts' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="AspNetUsersAttempts">
           <Key>
             <PropertyRef Name="Email" />
@@ -128,18 +130,6 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           <Property Name="City" Type="nvarchar" MaxLength="64" />
           <Property Name="DateTime" Type="datetimeoffset" Precision="7" Nullable="false" />
         </EntityType>
-        <Association Name="FK_AspNetUserExceptionLogs_AspNetUsers">
-          <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="0..1" />
-          <End Role="AspNetUserExceptionLogs" Type="Self.AspNetUserExceptionLogs" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUsers">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AspNetUserExceptionLogs">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_AspNetUserLoginLogs_AspNetUsers">
           <End Role="AspNetUsers" Type="Self.AspNetUsers" Multiplicity="1" />
           <End Role="AspNetUserLoginLogs" Type="Self.AspNetUserLoginLogs" Multiplicity="0..1" />
@@ -155,7 +145,6 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
         <EntityContainer Name="Toast_DevModel1StoreContainer">
           <EntitySet Name="AspNetUserClaims" EntityType="Self.AspNetUserClaims" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserExceptionLogs" EntityType="Self.AspNetUserExceptionLogs" Schema="dbo" store:Type="Tables" />
-          <EntitySet Name="AspNetUserLoginLogs" EntityType="Self.AspNetUserLoginLogs" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUserLogins" EntityType="Self.AspNetUserLogins" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetUsers" EntityType="Self.AspNetUsers" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="AspNetRoles" EntityType="Self.AspNetRoles" store:Type="Tables" store:Schema="dbo">
@@ -163,6 +152,19 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
     [AspNetRoles].[ID] AS [ID], 
     [AspNetRoles].[Name] AS [Name]
     FROM [dbo].[AspNetRoles] AS [AspNetRoles]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="AspNetUserLoginLogs" EntityType="Self.AspNetUserLoginLogs" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [AspNetUserLoginLogs].[UserID] AS [UserID], 
+    [AspNetUserLoginLogs].[IP] AS [IP], 
+    [AspNetUserLoginLogs].[Device] AS [Device], 
+    [AspNetUserLoginLogs].[JavascriptVersion] AS [JavascriptVersion], 
+    [AspNetUserLoginLogs].[IsMobileDevice] AS [IsMobileDevice], 
+    [AspNetUserLoginLogs].[Country] AS [Country], 
+    [AspNetUserLoginLogs].[City] AS [City], 
+    [AspNetUserLoginLogs].[LoginDateTime] AS [LoginDateTime], 
+    [AspNetUserLoginLogs].[LogoffDateTime] AS [LogoffDateTime]
+    FROM [dbo].[AspNetUserLoginLogs] AS [AspNetUserLoginLogs]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="AspNetUserRoles" EntityType="Self.AspNetUserRoles" store:Type="Tables" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -180,10 +182,6 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
     [AspNetUsersAttempts].[DateTime] AS [DateTime]
     FROM [dbo].[AspNetUsersAttempts] AS [AspNetUsersAttempts]</DefiningQuery>
           </EntitySet>
-          <AssociationSet Name="FK_AspNetUserExceptionLogs_AspNetUsers" Association="Self.FK_AspNetUserExceptionLogs_AspNetUsers">
-            <End Role="AspNetUsers" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserExceptionLogs" EntitySet="AspNetUserExceptionLogs" />
-          </AssociationSet>
           <AssociationSet Name="FK_AspNetUserLoginLogs_AspNetUsers" Association="Self.FK_AspNetUserLoginLogs_AspNetUsers">
             <End Role="AspNetUsers" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLoginLogs" EntitySet="AspNetUserLoginLogs" />
@@ -196,16 +194,12 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
         <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="AspNetUserClaims" EntityType="Toast_DevModel1.AspNetUserClaim" />
           <EntitySet Name="AspNetUserExceptionLogs" EntityType="Toast_DevModel1.AspNetUserExceptionLog" />
-          <EntitySet Name="AspNetUserLoginLogs" EntityType="Toast_DevModel1.AspNetUserLoginLog" />
           <EntitySet Name="AspNetUserLogins" EntityType="Toast_DevModel1.AspNetUserLogin" />
           <EntitySet Name="AspNetUsers" EntityType="Toast_DevModel1.AspNetUser" />
           <EntitySet Name="AspNetRoles" EntityType="Toast_DevModel1.AspNetRole" />
+          <EntitySet Name="AspNetUserLoginLogs" EntityType="Toast_DevModel1.AspNetUserLoginLog" />
           <EntitySet Name="AspNetUserRoles" EntityType="Toast_DevModel1.AspNetUserRole" />
           <EntitySet Name="AspNetUsersAttempts" EntityType="Toast_DevModel1.AspNetUsersAttempt" />
-          <AssociationSet Name="FK_AspNetUserExceptionLogs_AspNetUsers" Association="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers">
-            <End Role="AspNetUser" EntitySet="AspNetUsers" />
-            <End Role="AspNetUserExceptionLog" EntitySet="AspNetUserExceptionLogs" />
-          </AssociationSet>
           <AssociationSet Name="FK_AspNetUserLoginLogs_AspNetUsers" Association="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers">
             <End Role="AspNetUser" EntitySet="AspNetUsers" />
             <End Role="AspNetUserLoginLog" EntitySet="AspNetUserLoginLogs" />
@@ -213,10 +207,10 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
         </EntityContainer>
         <EntityType Name="AspNetUserClaim">
           <Key>
-            <PropertyRef Name="Id" />
+            <PropertyRef Name="ID" />
           </Key>
-          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="UserId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimType" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
           <Property Name="ClaimValue" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
@@ -236,32 +230,16 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="DateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AspNetUser" Relationship="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers" FromRole="AspNetUserExceptionLog" ToRole="AspNetUser" />
-        </EntityType>
-        <EntityType Name="AspNetUserLoginLog">
-          <Key>
-            <PropertyRef Name="UserID" />
-          </Key>
-          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
-          <Property Name="Device" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Name="JavascriptVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
-          <Property Name="IsMobileDevice" Type="Boolean" />
-          <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
-          <Property Name="LoginDateTime" Type="DateTimeOffset" Precision="7" />
-          <Property Name="LogoffDateTime" Type="DateTimeOffset" Precision="7" />
-          <NavigationProperty Name="AspNetUser" Relationship="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUserLoginLog" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserLogin">
           <Key>
             <PropertyRef Name="LoginProvider" />
             <PropertyRef Name="ProviderKey" />
-            <PropertyRef Name="UserId" />
+            <PropertyRef Name="UserID" />
           </Key>
           <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AspNetUser">
           <Key>
@@ -299,7 +277,6 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
           <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
           <Property Name="RegistrationDate" Type="DateTimeOffset" Nullable="false" Precision="7" />
-          <NavigationProperty Name="AspNetUserExceptionLogs" Relationship="Toast_DevModel1.FK_AspNetUserExceptionLogs_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserExceptionLog" />
           <NavigationProperty Name="AspNetUserLoginLog" Relationship="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUser" ToRole="AspNetUserLoginLog" />
         </EntityType>
         <EntityType Name="AspNetRole">
@@ -309,6 +286,21 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           </Key>
           <Property Name="ID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="AspNetUserLoginLog">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="IP" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+          <Property Name="Device" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="JavascriptVersion" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+          <Property Name="IsMobileDevice" Type="Boolean" />
+          <Property Name="Country" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
+          <Property Name="LoginDateTime" Type="DateTimeOffset" Precision="7" />
+          <Property Name="LogoffDateTime" Type="DateTimeOffset" Precision="7" />
+          <NavigationProperty Name="AspNetUser" Relationship="Toast_DevModel1.FK_AspNetUserLoginLogs_AspNetUsers" FromRole="AspNetUserLoginLog" ToRole="AspNetUser" />
         </EntityType>
         <EntityType Name="AspNetUserRole">
           <Key>
@@ -332,18 +324,6 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
           <Property Name="City" Type="String" MaxLength="64" FixedLength="false" Unicode="true" />
           <Property Name="DateTime" Type="DateTimeOffset" Nullable="false" Precision="7" />
         </EntityType>
-        <Association Name="FK_AspNetUserExceptionLogs_AspNetUsers">
-          <End Type="Toast_DevModel1.AspNetUser" Role="AspNetUser" Multiplicity="0..1" />
-          <End Type="Toast_DevModel1.AspNetUserExceptionLog" Role="AspNetUserExceptionLog" Multiplicity="*" />
-          <ReferentialConstraint>
-            <Principal Role="AspNetUser">
-              <PropertyRef Name="ID" />
-            </Principal>
-            <Dependent Role="AspNetUserExceptionLog">
-              <PropertyRef Name="UserID" />
-            </Dependent>
-          </ReferentialConstraint>
-        </Association>
         <Association Name="FK_AspNetUserLoginLogs_AspNetUsers">
           <End Type="Toast_DevModel1.AspNetUser" Role="AspNetUser" Multiplicity="1" />
           <End Type="Toast_DevModel1.AspNetUserLoginLog" Role="AspNetUserLoginLog" Multiplicity="0..1" />
@@ -367,8 +347,8 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
               <MappingFragment StoreEntitySet="AspNetUserClaims">
                 <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
                 <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
-                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
@@ -390,25 +370,10 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
-          <EntitySetMapping Name="AspNetUserLoginLogs">
-            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserLoginLog">
-              <MappingFragment StoreEntitySet="AspNetUserLoginLogs">
-                <ScalarProperty Name="LogoffDateTime" ColumnName="LogoffDateTime" />
-                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
-                <ScalarProperty Name="City" ColumnName="City" />
-                <ScalarProperty Name="Country" ColumnName="Country" />
-                <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
-                <ScalarProperty Name="JavascriptVersion" ColumnName="JavascriptVersion" />
-                <ScalarProperty Name="Device" ColumnName="Device" />
-                <ScalarProperty Name="IP" ColumnName="IP" />
-                <ScalarProperty Name="UserID" ColumnName="UserID" />
-              </MappingFragment>
-            </EntityTypeMapping>
-          </EntitySetMapping>
           <EntitySetMapping Name="AspNetUserLogins">
             <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserLogin">
               <MappingFragment StoreEntitySet="AspNetUserLogins">
-                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
                 <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
               </MappingFragment>
@@ -457,6 +422,21 @@ warning 6002: The table/view 'Toast_Dev.dbo.AspNetUsersAttempts' does not have a
               <MappingFragment StoreEntitySet="AspNetRoles">
                 <ScalarProperty Name="Name" ColumnName="Name" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AspNetUserLoginLogs">
+            <EntityTypeMapping TypeName="Toast_DevModel1.AspNetUserLoginLog">
+              <MappingFragment StoreEntitySet="AspNetUserLoginLogs">
+                <ScalarProperty Name="LogoffDateTime" ColumnName="LogoffDateTime" />
+                <ScalarProperty Name="LoginDateTime" ColumnName="LoginDateTime" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="IsMobileDevice" ColumnName="IsMobileDevice" />
+                <ScalarProperty Name="JavascriptVersion" ColumnName="JavascriptVersion" />
+                <ScalarProperty Name="Device" ColumnName="Device" />
+                <ScalarProperty Name="IP" ColumnName="IP" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

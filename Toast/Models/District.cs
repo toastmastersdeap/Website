@@ -23,7 +23,6 @@ namespace Toast.Models
         public int DistrictID { get; set; }
         public int RegionID { get; set; }
     
-        public virtual Region Region { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<Division> Divisions { get; set; }
     }

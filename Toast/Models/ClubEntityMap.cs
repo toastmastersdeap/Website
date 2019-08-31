@@ -18,6 +18,6 @@ namespace Toast.Models
         public int ClubID { get; set; }
         public string ClubTable { get; set; }
     
-        public virtual Clubs_TBD_ Clubs_TBD_ { get; set; }
+        public virtual Club Club { get; set; }
     }
 }

@@ -66,10 +66,12 @@ namespace Toast.Controllers
              if (Request.IsAuthenticated)
              {
                 ModelState.AddModelError("", "It appears that you are already logged in or the page was refreshed while logging...");
-                AuthenticationManager.SignOut();
+                RedirectToAction("Index", "Profile");
+                //AuthenticationManager.SignOut();
              }
 
             ViewBag.ReturnUrl = returnUrl;
+
             return View();
         }
 
@@ -90,13 +92,14 @@ namespace Toast.Controllers
                 returnUrl = "~/Profile/Index";
             }
 
+            var user = UserManager.FindByEmail(model.Email);
+
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await SignInManager.PasswordSignInAsync(user.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
-                    var user = await UserManager.FindAsync(model.Email, model.Password);
                     var userIP = GeoLocation.GetUserIP(Request).Split(':').First();
                     var userCountry = GeoLocation.GetCountryFromIP(userIP);
                     var userCity = GeoLocation.GetCityFromIP(userIP);
@@ -114,13 +117,12 @@ namespace Toast.Controllers
                         // TODO:
                         // We decide if the user is an Admin or a Member and redirect to the proper view
                         //return RedirectToAction("Index", (user.ProfileType != AccountProfile.Individual && user.AdminAccount)) ? "Admin" : "Profile");
-                        return RedirectToAction("Index", "Profile");
+                        return RedirectToLocal(returnUrl);
                     }
+                    //TODO:
                     //_dbSProc.InsertAspUserLogonAttempt(model.Email, userIP, userIP, userCountry, Request.Browser.Type);
                     //ModelState.AddModelError("", "Email had not been confirmed.");
                     return View(model);
-
-                    //return RedirectToLocal(returnUrl);
 
                 case SignInStatus.LockedOut:
                     return View("Lockout");
@@ -201,7 +203,7 @@ namespace Toast.Controllers
                 var user = new ApplicationUser
                 {
                     UserName = PasswordGenerator.Generate(length: 16),
-                    Email = model.Email,
+                    Email = model.Email.ToLower(),
                     FirstName = model.FirstName,
                     LastName = model.LastName,
                     IPAddress = userIP,

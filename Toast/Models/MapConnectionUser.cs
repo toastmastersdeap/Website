@@ -14,10 +14,13 @@ namespace Toast.Models
     
     public partial class MapConnectionUser
     {
+        public int ID { get; set; }
         public string ConnectionID { get; set; }
         public string UserAgent { get; set; }
         public bool Connected { get; set; }
         public string UserName { get; set; }
         public string ClubName { get; set; }
+    
+        public virtual MapUser MapUser { get; set; }
     }
 }

@@ -7,13 +7,21 @@ using Toast.Models;
 
 namespace Toast.Controllers
 {
-    //[Authorize] // ******** Commented it out only for debugging ******** WILL BE REMOVE
+    //[Authorize] // ******** TODO: Commented it out only for debugging ******** WILL REMOVE
     public class ProfileController : Controller
     {
         // GET: Profile
         public ActionResult Index(string memberId)
         {
-            ViewBag.Title = "Profile";
+            ViewBag.Title = "Index";
+
+            return View();
+        }
+
+        // GET: Messages
+        public ActionResult Messages(string memberId)
+        {
+            ViewBag.Title = "Messages";
 
             return View();
         }

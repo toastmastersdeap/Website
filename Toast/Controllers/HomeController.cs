@@ -13,18 +13,19 @@ namespace Toast.Controllers
 
         public ActionResult Index()
         {
-            if (Request.IsAuthenticated)
-            {
-                var memberIsAdmin = dbPROC.GetMemberAccountType();
+            //if (Request.IsAuthenticated)
+            //{
+            //    // TODO:
+            //    //var memberIsAdmin = dbPROC.GetMemberAccountType();
 
-                if (memberIsAdmin)
-                {
-                    return RedirectToAction("Index", "Admin");
-                }
+            //    //if (memberIsAdmin)
+            //    //{
+            //    //    return RedirectToAction("Index", "Admin");
+            //    //}
 
-                // Go to the Member Profile
-                return RedirectToAction("Index", "Profile");
-            }
+            //    // Go to the Member Profile
+            //    return RedirectToAction("Index", "Profile");
+            //}
 
             return View();
         }

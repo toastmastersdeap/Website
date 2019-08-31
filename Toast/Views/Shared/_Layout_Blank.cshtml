@@ -14,26 +14,24 @@
     {@RenderSection("Styles", required: false)}
 
     <!-- Primary style -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
     @Styles.Render("~/bundles/animate/css")
     @Styles.Render("~/bundles/bootstrap/css")
     @Styles.Render("~/bundles/peicon7stroke/css")
     @Styles.Render("~/bundles/toasty/css")
-
+    @Styles.Render("~/bundles/toastyStyle/css")
 </head>
 <body>
 
-    <!-- Simple splash screen-->
-    <div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Toasty</h1><p>Toastmasters</p><div class="spinner"> <div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div> </div> </div> </div>
-    <!--[if lt IE 7]>
-    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-
     <div class="row">
-        <div id="logo" class="light-version">
-            <span>
-                <a class="" href="@Url.Action("Index", "Home")">Toasty</a>
-            </span>
+        <div class="col-sm-12">
+            <div id="logo" class="light-version">
+                <span>
+                    <a href="@Url.Action("Index", "Home")">
+                        <img src="~/Images/logo_maroon.png" />
+                    </a>
+                </span>
+            </div>
         </div>
     </div>
 
@@ -43,16 +41,19 @@
     <!-- Section for main scripts render -->
     @Scripts.Render("~/bundles/jquery/js")
     @Scripts.Render("~/bundles/bootstrap/js")
-    @Scripts.Render("~/bundles/toasty/js")
+    @Scripts.Render("~/bundles/jqueryval")
+    <script src="~/Vendor/iCheck/icheck.min.js"></script>
 
     <!-- Handler for local scripts -->
     @RenderSection("scripts", required: false)
 
     <!-- Footer -->
-    <div class="row">
-        <div class="col-md-12 text-center">
-            <p>&copy; @DateTime.Now.Year - <strong>Toasty</strong></p>
+    <footer class="bg-transparent">
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <p>&copy; @DateTime.Now.Year - <strong>SpeakerAnalytics</strong></p>
+            </div>
         </div>
-    </div>
+    </footer>
 </body>
 </html>

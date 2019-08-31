@@ -34,8 +34,8 @@ $(document).ready(function () {
 
     // Initialize iCheck plugin
     $('.i-checks').iCheck({
-        checkboxClass: 'icheckbox_square-green',
-        radioClass: 'iradio_square-green'
+        checkboxClass: 'icheckbox_square-blue',
+        radioClass: 'iradio_square-blue'
     });
 
     // Initialize animate panel function

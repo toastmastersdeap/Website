@@ -2,7 +2,7 @@
     Layout = "~/Views/Shared/_Layout_Profile.cshtml";
 }
 
-<div class="normalheader ">
+<div class="normalheader small-header">
     <div class="row text-center">
         <div class="col-md-12">
             <div id="bootstrap_alerts">
@@ -15,12 +15,7 @@
     </div>
     <div class="hpanel">
         <div class="panel-body">
-            <a class="small-header-action" href="">
-                <div class="clip-header">
-                    <i class="fa fa-arrow-up"></i>
-                </div>
-            </a>
-            <div id="hbreadcrumb" class="pull-right m-t-lg">
+            <div id="hbreadcrumb" class="pull-right">
                 <ol class="hbreadcrumb breadcrumb">
                     <li><a href="@Url.Action("Index", "Dashboard")">Dashboard</a></li>
                     <li class="active">

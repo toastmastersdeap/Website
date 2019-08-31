@@ -312,6 +312,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
+    <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
@@ -319,10 +320,12 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\HTMLHelperExtensions.cs" />
+    <Compile Include="Hubs\HitCounterHub.cs" />
+    <Compile Include="Hubs\MessagingHub.cs" />
     <Compile Include="jsonClasses\MemberInfo.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Area.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\AspNetRole.cs">
       <DependentUpon>AspnetUsers.tt</DependentUpon>
@@ -364,16 +367,16 @@
       <DependentUpon>AspnetUsers.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Club.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClubEntityMap.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClubPhoenix_TBD_.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ClubPosition.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Clubs_TBD_.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -384,10 +387,10 @@
     <Compile Include="Models\DBStoredProcedure.cs" />
     <Compile Include="Models\DBQuery.cs" />
     <Compile Include="Models\District.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Division.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\EducationAward.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -429,10 +432,25 @@
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MapConnectionUser.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>MapUser.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MapUser.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapUser.Context.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\MapUser.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>MapUser.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MapUser.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapUser.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\MapUser1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MapUser.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Meeting.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -477,34 +495,49 @@
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileAwardsMap.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileBusinessPosition.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileComment.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProfileEntity.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileEntity.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProfileEntity.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ProfileEntity.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ProfileEntity.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileExternalNotification.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileExternalNotificationsType.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileMember.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileMessage.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileMessageSession.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfileMessageUserSession.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ProfilePost.cs">
-      <DependentUpon>Model.tt</DependentUpon>
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\Region.cs">
       <DependentUpon>Model.tt</DependentUpon>
@@ -524,6 +557,9 @@
     <Compile Include="Models\TestType.cs">
       <DependentUpon>Model.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\vw_UserBasicInfo.cs">
+      <DependentUpon>ProfileEntity.tt</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
     <Compile Include="Test.cs" />
@@ -533,8 +569,8 @@
     <Compile Include="Utilities\SmsService.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\img\green%402x.png" />
-    <Content Include="Content\img\green.png" />
+    <Content Include="Content\img\blue%402x.png" />
+    <Content Include="Content\img\blue.png" />
     <Content Include="Content\metisMenu.css" />
     <Content Include="Content\metisMenu.min.css" />
     <Content Include="Content\style.css" />
@@ -544,35 +580,17 @@
     <Content Include="Icons\pe-icon-7-stroke\css\helper.css" />
     <Content Include="Icons\pe-icon-7-stroke\css\pe-icon-7-stroke.css" />
     <Content Include="Icons\pe-icon-7-stroke\fonts\Pe-icon-7-stroke.svg" />
-    <Content Include="Images\gallery\1.jpg" />
-    <Content Include="Images\gallery\10.jpg" />
-    <Content Include="Images\gallery\10s.jpg" />
-    <Content Include="Images\gallery\1s.jpg" />
-    <Content Include="Images\gallery\2.jpg" />
-    <Content Include="Images\gallery\2s.jpg" />
-    <Content Include="Images\gallery\3.jpg" />
-    <Content Include="Images\gallery\3s.jpg" />
-    <Content Include="Images\gallery\4.jpg" />
-    <Content Include="Images\gallery\4s.jpg" />
-    <Content Include="Images\gallery\5.jpg" />
-    <Content Include="Images\gallery\5s.jpg" />
-    <Content Include="Images\gallery\6.jpg" />
-    <Content Include="Images\gallery\6s.jpg" />
-    <Content Include="Images\gallery\7.jpg" />
-    <Content Include="Images\gallery\7s.jpg" />
-    <Content Include="Images\gallery\8.jpg" />
-    <Content Include="Images\gallery\8s.jpg" />
-    <Content Include="Images\gallery\9.jpg" />
-    <Content Include="Images\gallery\9s.jpg" />
-    <Content Include="Images\landing\analytics_front_page.png" />
+    <Content Include="Images\bruce.jpg" />
+    <Content Include="Images\goggins.jpg" />
+    <Content Include="Images\jav.jpg" />
+    <Content Include="Images\kas.jpg" />
     <Content Include="Images\landing\data_analytics_image.jpg" />
-    <Content Include="Images\landing\header.jpg" />
     <Content Include="Images\landing\intro-bg.jpg" />
-    <Content Include="Images\loading-bars.svg" />
     <Content Include="Images\logo_black.png" />
     <Content Include="Images\logo_maroon.png" />
     <Content Include="Images\logo_white.png" />
     <Content Include="Images\new_sharp_logo.png" />
+    <Content Include="Images\nikola.jpg" />
     <Content Include="Images\profile.jpg" />
     <Content Include="Images\speaker_logo.png" />
     <Content Include="Images\svg\business_plan.svg" />
@@ -593,6 +611,7 @@
     <Content Include="Images\svg\web_developer.svg" />
     <Content Include="Images\svg\web_development.svg" />
     <Content Include="Images\toast_logo.png" />
+    <Content Include="Images\tony.jpg" />
     <Content Include="Models\AspnetUsers.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>AspnetUsers.edmx</DependentUpon>
@@ -603,6 +622,16 @@
       <DependentUpon>AspnetUsers.edmx</DependentUpon>
       <LastGenOutput>AspnetUsers.cs</LastGenOutput>
     </Content>
+    <Content Include="Models\MapUser.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MapUser.edmx</DependentUpon>
+      <LastGenOutput>MapUser.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\MapUser.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MapUser.edmx</DependentUpon>
+      <LastGenOutput>MapUser1.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Model.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
@@ -612,6 +641,16 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>Model.edmx</DependentUpon>
       <LastGenOutput>Model.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ProfileEntity.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProfileEntity.edmx</DependentUpon>
+      <LastGenOutput>ProfileEntity.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\ProfileEntity.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>ProfileEntity.edmx</DependentUpon>
+      <LastGenOutput>ProfileEntity.cs</LastGenOutput>
     </Content>
     <Content Include="Scripts\barCharts.js" />
     <Content Include="Scripts\Chart.js" />
@@ -655,6 +694,21 @@
     <Content Include="Scripts\globalize\plural.js" />
     <Content Include="Scripts\globalize\relative-time.js" />
     <Content Include="Scripts\globalize\unit.js" />
+    <EntityDeploy Include="Models\ProfileEntity.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>ProfileEntity.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\ProfileEntity.edmx.diagram">
+      <DependentUpon>ProfileEntity.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\MapUser.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MapUser.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\MapUser.edmx.diagram">
+      <DependentUpon>MapUser.edmx</DependentUpon>
+    </Content>
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1-vsdoc.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -2819,9 +2873,10 @@
     <Content Include="Views\Shared\_Alert.cshtml" />
     <Content Include="Vendor\particles\package.json" />
     <Content Include="Vendor\particles\particles.json" />
+    <Content Include="Views\Profile\Messages.cshtml" />
+    <Content Include="Views\Shared\_Layout_Messages.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Hubs\" />
     <Folder Include="Vendor\moment\src\lib\create\" />
     <Folder Include="Vendor\moment\src\lib\duration\" />
     <Folder Include="Vendor\moment\src\lib\format\" />
@@ -2835,7 +2890,6 @@
     <Folder Include="Vendor\pdfmake\libs\FileSaver.js\" />
     <Folder Include="Vendor\peity\test\comparisons\" />
     <Folder Include="Vendor\peity\test\images\" />
-    <Folder Include="Views\HTMLHelperExtensions\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

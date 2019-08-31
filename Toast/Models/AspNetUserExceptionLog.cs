@@ -26,7 +26,5 @@ namespace Toast.Models
         public string Country { get; set; }
         public string City { get; set; }
         public System.DateTimeOffset DateTime { get; set; }
-    
-        public virtual AspNetUser AspNetUser { get; set; }
     }
 }

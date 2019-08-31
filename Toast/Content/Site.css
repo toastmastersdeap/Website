@@ -12,10 +12,14 @@ footer {
     background-color: #eaeaea;
 }
 
+section {
+    font-size: 15px;
+}
+
 .hpanel {
     font-size: 15px;
     background-color: #fff;
-    box-shadow: 0px 8px 8px 0px rgba(51,51,51,0.1);
+    box-shadow: 3px 8px 8px 3px rgba(51,51,51,0.1);
 }
 
 .hpanel .panel-heading {
@@ -33,6 +37,12 @@ footer {
     border-top: 2px solid #772432;
 }
 
+@media (max-width:720px){
+    .row div.col-xs-12.col-sm-offset-2.col-sm-4.col-md-offset-0.col-md-6,
+    .row.m-t-lg div.col-xs-12.col-sm-4.col-md-6 {
+        margin-bottom: 30px;
+    }
+}
 
 /* Override bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -74,6 +84,13 @@ footer {
     display: block;
     background-color: #fff;
     margin-left: 0
+}
+
+@media(max-width:768px) {
+    .landing-page .navbar-nav > li, .landing-page .navbar-nav > li > a {
+        border-bottom: 1px rgba(119, 36, 50, 0.3) solid;
+        background-color: #fff;
+    }
 }
 
 .landing-page .navbar-default .navbar-toggle:hover,
@@ -327,10 +344,19 @@ body.landing-page section:nth-child(odd) {
 }
 
 /* Landing Page Logo */
+#logo.light-version img,
 div[class="navbar-header"] a > img {
     height: 55px;
     width: 225px;
     float: left;
+}
+
+/* Profile Logo */
+#profile-logo a img {
+    height: 50px;
+    width: 194px;
+    float: left;
+    vertical-align: middle;
 }
 
 div[class="navbar-header"] a > h3 {
@@ -450,7 +476,7 @@ div[class="navbar-header"] a > h3 {
     right: 0;
     z-index: 2;
     width: 100%;
-    height: 100px;
+    height: 130px;
 }
 
 .abs-svg-top {

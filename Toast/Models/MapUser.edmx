@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MapUer.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'DB_A4B8F5_ToastDev.dbo.MapConnectionUsers' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="MapConnectionUsers">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Connected" />
+          </Key>
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConnectionID" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserAgent" Type="nvarchar(max)" />
+          <Property Name="Connected" Type="bit" Nullable="false" />
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" />
+          <Property Name="ClubName" Type="nvarchar" MaxLength="128" />
+        </EntityType>
+        <EntityType Name="MapUsers">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="nvarchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_MapConnectionUsers_MapUsers">
+          <End Role="MapUsers" Type="Self.MapUsers" Multiplicity="0..1" />
+          <End Role="MapConnectionUsers" Type="Self.MapConnectionUsers" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapUsers">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="MapConnectionUsers">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MapUerStoreContainer">
+          <EntitySet Name="MapUsers" EntityType="Self.MapUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MapConnectionUsers" EntityType="Self.MapConnectionUsers" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [MapConnectionUsers].[ID] AS [ID], 
+    [MapConnectionUsers].[ConnectionID] AS [ConnectionID], 
+    [MapConnectionUsers].[UserAgent] AS [UserAgent], 
+    [MapConnectionUsers].[Connected] AS [Connected], 
+    [MapConnectionUsers].[UserName] AS [UserName], 
+    [MapConnectionUsers].[ClubName] AS [ClubName]
+    FROM [dbo].[MapConnectionUsers] AS [MapConnectionUsers]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_MapConnectionUsers_MapUsers" Association="Self.FK_MapConnectionUsers_MapUsers">
+            <End Role="MapUsers" EntitySet="MapUsers" />
+            <End Role="MapConnectionUsers" EntitySet="MapConnectionUsers" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MapUer" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="MapUsers" EntityType="MapUer.MapUser" />
+          <EntitySet Name="MapConnectionUsers" EntityType="MapUer.MapConnectionUser" />
+          <AssociationSet Name="FK_MapConnectionUsers_MapUsers" Association="MapUer.FK_MapConnectionUsers_MapUsers">
+            <End Role="MapUser" EntitySet="MapUsers" />
+            <End Role="MapConnectionUser" EntitySet="MapConnectionUsers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="MapUser">
+          <Key>
+            <PropertyRef Name="UserName" />
+          </Key>
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MapConnectionUsers" Relationship="MapUer.FK_MapConnectionUsers_MapUsers" FromRole="MapUser" ToRole="MapConnectionUser" />
+        </EntityType>
+        <EntityType Name="MapConnectionUser">
+          <Key>
+            <PropertyRef Name="ID" />
+            <PropertyRef Name="ConnectionID" />
+            <PropertyRef Name="Connected" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConnectionID" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="UserAgent" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Connected" Type="Boolean" Nullable="false" />
+          <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <Property Name="ClubName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="MapUser" Relationship="MapUer.FK_MapConnectionUsers_MapUsers" FromRole="MapConnectionUser" ToRole="MapUser" />
+        </EntityType>
+        <Association Name="FK_MapConnectionUsers_MapUsers">
+          <End Type="MapUer.MapUser" Role="MapUser" Multiplicity="0..1" />
+          <End Type="MapUer.MapConnectionUser" Role="MapConnectionUser" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="MapUser">
+              <PropertyRef Name="UserName" />
+            </Principal>
+            <Dependent Role="MapConnectionUser">
+              <PropertyRef Name="UserName" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MapUerStoreContainer" CdmEntityContainer="Entities">
+          <EntitySetMapping Name="MapUsers">
+            <EntityTypeMapping TypeName="MapUer.MapUser">
+              <MappingFragment StoreEntitySet="MapUsers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MapConnectionUsers">
+            <EntityTypeMapping TypeName="MapUer.MapConnectionUser">
+              <MappingFragment StoreEntitySet="MapConnectionUsers">
+                <ScalarProperty Name="ClubName" ColumnName="ClubName" />
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="Connected" ColumnName="Connected" />
+                <ScalarProperty Name="UserAgent" ColumnName="UserAgent" />
+                <ScalarProperty Name="ConnectionID" ColumnName="ConnectionID" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

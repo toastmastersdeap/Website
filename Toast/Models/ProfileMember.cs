@@ -35,7 +35,7 @@ namespace Toast.Models
         public Nullable<int> CityID { get; set; }
         public Nullable<System.DateTime> UniversitySchoolGraduationDate { get; set; }
         public Nullable<System.DateTime> GraduateSchoolGraduationDate { get; set; }
-        public string MyDataView { get; set; }
+        public string ProfileCustomView { get; set; }
         public string About { get; set; }
         public string ImageLink { get; set; }
         public string BannerLink { get; set; }
@@ -45,8 +45,6 @@ namespace Toast.Models
         public Nullable<System.DateTimeOffset> UpdateDate { get; set; }
     
         public virtual AspNetUser AspNetUser { get; set; }
-        public virtual Clubs_TBD_ Clubs_TBD_ { get; set; }
-        public virtual ListCity ListCity { get; set; }
         public virtual ProfileBusinessPosition ProfileBusinessPosition { get; set; }
     }
 }

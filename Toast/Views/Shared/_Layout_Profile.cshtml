@@ -10,7 +10,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700' rel='stylesheet' type='text/css'>
 
     <!-- Primary vendor style -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type='text/css' href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css" />
     @Styles.Render("~/bundles/animate/css")
     @Styles.Render("~/bundles/bootstrap/css")
     @Styles.Render("~/bundles/peicon7stroke/css")
@@ -21,14 +21,11 @@
 
     <!-- Primary style -->
     @Styles.Render("~/bundles/toasty/css")
+    @Styles.Render("~/bundles/toastyStyle/css")
+    
 </head>
 <body>
 
-    <!-- Simple splash screen-->
-    <div class="splash"> <div class="color-line"></div><div class="splash-title"><h1>Toasty</h1><p>Toastmasters</p><div class="spinner"> <div class="rect1"></div> <div class="rect2"></div> <div class="rect3"></div> <div class="rect4"></div> <div class="rect5"></div> </div> </div> </div>
-    <!--[if lt IE 7]>
-    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
     <!-- Header -->
     <div id="header">
         @Html.Partial("_Header")

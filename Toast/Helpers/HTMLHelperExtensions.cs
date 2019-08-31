@@ -27,5 +27,11 @@ namespace Toast
 
             return controller == currentController && action == currentAction ? cssClass : String.Empty;
         }
+
+        public static string PageClass(this HtmlHelper html)
+        {
+            string currentAction = (string)html.ViewContext.RouteData.Values["action"];
+            return currentAction;
+        }
     }
 }

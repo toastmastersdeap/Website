@@ -14,8 +14,20 @@ namespace Toast.Models
     
     public partial class ProfileMessageSession
     {
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
+        public ProfileMessageSession()
+        {
+            this.ProfileMessages = new HashSet<ProfileMessage>();
+            this.ProfileMessageUserSessions = new HashSet<ProfileMessageUserSession>();
+        }
+    
         public string ID { get; set; }
         public string CreatedBy { get; set; }
         public System.DateTimeOffset DateCreated { get; set; }
+    
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProfileMessage> ProfileMessages { get; set; }
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<ProfileMessageUserSession> ProfileMessageUserSessions { get; set; }
     }
 }

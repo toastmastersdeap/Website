@@ -1,0 +1,142 @@
+﻿
+@{
+/**/
+
+Layout = "~/Views/Shared/_Layout_Messages.cshtml";
+ViewBag.Title = "Messages";
+}
+
+
+<div class="normalheader small-header">
+    <div class="hpanel">
+        <div class="panel-body">
+            <div id="hbreadcrumb" class="pull-right">
+                <ol class="hbreadcrumb breadcrumb">
+                    <li><a href="#">Dashboard</a></li>
+                    <li>
+                        <span>Other views</span>
+                    </li>
+                    <li class="active">
+                        <span>Chat view</span>
+                    </li>
+                </ol>
+            </div>
+            <h2 class="font-light m-b-xs">
+                Chat view
+            </h2>
+            <small>Peer to Peer messaging</small>
+        </div>
+    </div>
+</div>
+
+<div class="content">
+
+    <div class="row">
+        <div class="col-md-12">
+            <div class="hpanel ">
+                <div class="panel-heading hbuilt">
+                    <div class="panel-tools">
+                        <a class="closebox"><i class="fa fa-times"></i></a>
+                    </div>
+                    Chat room
+                </div>
+                <div class="panel-body no-padding">
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-8 col-md-9 ">
+                            <div class="chat-discussion">
+
+                                <div class="chat-message right">
+                                    <img class="message-avatar" src="~/Images/kas.jpg" alt="">
+                                    <div class="message">
+                                        <a class="message-author" href="#"> Kassandra Flores </a>
+                                        <span class="message-date">  Fri Aug 25 2019 - 11:12:36 </span>
+                                        <span class="message-content">
+                                            I am working to improve the Toastmasters website, what do you think of the Chat Messages?
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="chat-message left">
+                                    <img class="message-avatar" src="~/Images/jav.jpg" alt="">
+                                    <div class="message">
+                                        <a class="message-author" href="#"> Javier Espinosa </a>
+                                        <span class="message-date">  Fri Aug 25 2019 - 11:12:36 </span>
+                                        <span class="message-content">
+                                            Looks good I think it needs some color tweaks.
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="chat-message right">
+                                    <img class="message-avatar" src="~/Images/kas.jpg" alt="">
+                                    <div class="message">
+                                        <a class="message-author" href="#"> Kassandra Flores </a>
+                                        <span class="message-date">  Fri Aug 25 2019 - 11:12:36 </span>
+                                        <span class="message-content">
+                                            Will do!
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-4 col-md-3">
+                            <div class="chat-users">
+
+                                <div class="users-list">
+
+                                    <div class="chat-user">
+                                        <span class="pull-right label label-success">Online</span>
+                                        <img class="chat-avatar" src="~/Images/kas.jpg" alt="">
+                                        <div class="chat-user-name">
+                                            <a href="#">Kassandra Flores</a>
+                                        </div>
+                                    </div>
+                                    <div class="chat-user">
+                                        <span class="pull-right label label-success">Online</span>
+                                        <img class="chat-avatar" src="~/Images/jav.jpg" alt="">
+                                        <div class="chat-user-name">
+                                            <a href="#">Javier Espinosa</a>
+                                        </div>
+                                    </div>
+                                    <div class="chat-user">
+                                        <img class="chat-avatar" src="~/Images/bruce.jpg" alt="">
+                                        <div class="chat-user-name">
+                                            <a href="#">Bruce Wayne</a>
+                                        </div>
+                                    </div>
+                                    <div class="chat-user">
+                                        <img class="chat-avatar" src="~/Images/nikola.jpg" alt="">
+                                        <div class="chat-user-name">
+                                            <a href="#">Nikola Tesla</a>
+                                        </div>
+                                    </div>
+                                    <div class="chat-user">
+                                        <img class="chat-avatar" src="~/Images/tony.jpg" alt="">
+                                        <div class="chat-user-name">
+                                            <a href="#">Tony Stark</a>
+                                        </div>
+                                    </div>
+                                    <div class="chat-user">
+                                        <img class="chat-avatar" src="~/Images/goggins.jpg" alt="">
+                                        <div class="chat-user-name">
+                                            <a href="#">David Goggins</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel-footer">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Type your message here...">
+                        <span class="input-group-btn">
+                            <button class="btn btn-success">
+                                Send
+                            </button>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -18,5 +18,8 @@ namespace Toast.Models
         public string SessionID { get; set; }
         public string UserID { get; set; }
         public bool Hidden { get; set; }
+    
+        public virtual AspNetUser AspNetUser { get; set; }
+        public virtual ProfileMessageSession ProfileMessageSession { get; set; }
     }
 }

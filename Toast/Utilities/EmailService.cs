@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNet.Identity;
+using Newtonsoft.Json;
 using SendGrid;
 using SendGrid.Helpers.Mail;
 using System;
@@ -14,6 +15,9 @@ namespace Toast.Utilities
         private const string Company = "SpeakerAnalytics";
 
         private EmailAddress EmailFromAddress = new EmailAddress("no_reply@speakeranalytics.com", EmailFromName);
+        private EmailAddress SupportEmailFromAddress = new EmailAddress("support@speakeranalytics.com", EmailFromName);
+
+        //private const string TemplateIds = { "Notification-Function Roles", "", "" };
 
         public async Task SendAsync(IdentityMessage message)
         {
@@ -27,6 +31,12 @@ namespace Toast.Utilities
 
             var response = await _sendGrid.SendEmailAsync(theMessage);
         }
+
+        /*** 
+         * 
+         * User Section
+         * 
+         * ***/
 
         //public Task SendRequestCodeEmail(StringDictionary contactForm)
         //{
@@ -170,6 +180,124 @@ namespace Toast.Utilities
         //   return task;
         //}
 
+        public async Task SendMessageFromOrganizer(string templadeId, string firstName, string email, string number)
+        {
+            //const string subject = "Recover your Account";
+
+            var theMessage = new SendGridMessage()
+            {
+                From = EmailFromAddress,
+                //Subject = subject,
+            };
+            theMessage.SetTemplateId(templadeId);
+            theMessage.AddTo(new EmailAddress(email));
+
+            var dynamicTemplateData = new
+            {
+                FirstName = firstName,
+                Email = email,
+                Number = number,
+                CurrentYear = DateTimeOffset.UtcNow.Year.ToString(),
+                Company = Company
+            };
+            theMessage.SetTemplateData(dynamicTemplateData);
+
+            var response = await _sendGrid.SendEmailAsync(theMessage);
+        }
+
+        public async Task SendWelcomeEmail(string firstName, string toEmailAddress, string confirmationUrl)
+        {
+            const string subject = "Welcome to SpeakerAnalytics!";
+
+            var theMessage = new SendGridMessage()
+            {
+                From = EmailFromAddress,
+                Subject = subject
+            };
+            theMessage.SetTemplateId("d-ca86c08eb0c84dbe87c5f2e53bf9e37a");
+            theMessage.AddTo(new EmailAddress(toEmailAddress));
+             
+            var dynamicTemplateData = new WelcomeEmail
+            {
+                firstname = firstName,
+                confirmurl = confirmationUrl,
+                currentyear = DateTimeOffset.UtcNow.Year.ToString(),
+                company = Company
+            };
+            theMessage.SetTemplateData(dynamicTemplateData);
+
+            var response = await _sendGrid.SendEmailAsync(theMessage);
+        }
+
+        public async Task SendResetPasswordEmail(string firstName, string email, string ip, string country, string resetLink)
+        {
+            const string subject = "Recover your Account";
+
+            var theMessage = new SendGridMessage()
+            {
+                From = EmailFromAddress,
+                Subject = subject,
+            };
+            theMessage.SetTemplateId("d-0798f22893c943dabe60c67f85fb4318");
+            theMessage.AddTo(new EmailAddress(email));
+
+            if (string.IsNullOrEmpty(ip))
+            {
+                ip = "Not Found";
+            }
+
+            if (string.IsNullOrEmpty(country))
+            {
+                country = "- Not Found";
+            }
+
+            var dynamicTemplateData = new ForgotPassword
+            {
+                firstname = firstName,
+                email = email,
+                reseturl = resetLink,
+                currentyear = DateTimeOffset.UtcNow.Year.ToString(),
+                company = Company
+            };
+            theMessage.SetTemplateData(dynamicTemplateData);
+
+            var response = await _sendGrid.SendEmailAsync(theMessage);
+        }
+
+        /*** 
+         * 
+         * Admin or Support Section
+         * 
+         * ***/
+
+        public async Task SendWebsiteError(string toEmailAddress, string user, string routeData, string exceptionMessage, string exceptionTrace)
+        {
+            const string subject = "Error - Web Server";
+
+            var theMessage = new SendGridMessage()
+            {
+                From = SupportEmailFromAddress,
+                Subject = subject
+        };
+            theMessage.SetTemplateId("d-b3d580b4bb0c4c17b5c494f06842c416");
+            theMessage.AddTo(new EmailAddress("almontejoseg@gmail.com")); // TODO: ************** Temporarily ******************
+
+            var dynamicTemplateData = new WebsiteError
+            {
+                webaddress = ConfigurationManager.AppSettings["AppWebSite"],
+                useraffected = user,
+                routedata = routeData,
+                datestamp = DateTimeOffset.UtcNow.ToString(),
+                exceptionmessage = exceptionMessage,
+                exceptiontrace = exceptionTrace,
+            };
+            theMessage.SetTemplateData(dynamicTemplateData);
+
+            var response = await _sendGrid.SendEmailAsync(theMessage);
+
+            //return response;
+        }
+
         //public Task SendRequestSupportEmail(StringDictionary contactForm)
         //{
         //    const string subject = "Request - Customer Support";
@@ -203,95 +331,58 @@ namespace Toast.Utilities
         //    return task;
         //}
 
-        public Task SendWelcomeEmail(string firstName, string toEmailAddress, string confirmationUrl)
+        private class WelcomeEmail
         {
-            const string subject = "Welcome to SpeakerAnalytics!";
+            [JsonProperty("firstname")]
+            public string firstname { get; set; }
 
-            var theMessage = new SendGridMessage()
-            {
-                From = EmailFromAddress,
-                Subject = subject
-            };
-            theMessage.SetTemplateId("d-ca86c08eb0c84dbe87c5f2e53bf9e37a");
-            theMessage.AddTo(new EmailAddress(toEmailAddress));
+            [JsonProperty("confirmurl")]
+            public string confirmurl { get; set; }
 
-            var dynamicTemplateData = new
-            {
-                FirstName = firstName,
-                ConfirmUrl = confirmationUrl,
-                CurrentYear = DateTimeOffset.UtcNow.Year.ToString(),
-                Company = Company
-            };
-            theMessage.SetTemplateData(dynamicTemplateData);
+            [JsonProperty("currentyear")]
+            public string currentyear { get; set; }
 
-            var response = _sendGrid.SendEmailAsync(theMessage);
-
-            return response;
+            [JsonProperty("company")]
+            public string company { get; set; }
         }
 
-        public Task SendResetPasswordEmail(string firstName, string email, string ip, string country, string resetLink)
+        private class ForgotPassword
         {
-            const string subject = "Recover your Account";
+            [JsonProperty("firstname")]
+            public string firstname { get; set; }
 
-            var theMessage = new SendGridMessage()
-            {
-                From = EmailFromAddress,
-                Subject = subject,
-            };
-            theMessage.SetTemplateId("d-0798f22893c943dabe60c67f85fb4318");
-            theMessage.AddTo(new EmailAddress(email));
+            [JsonProperty("email")]
+            public string email { get; set; }
 
-            if (string.IsNullOrEmpty(ip))
-            {
-                ip = "Not Found";
-            }
+            [JsonProperty("reseturl")]
+            public string reseturl { get; set; }
 
-            if (string.IsNullOrEmpty(country))
-            {
-                country = "- Not Found";
-            }
+            [JsonProperty("currentyear")]
+            public string currentyear { get; set; }
 
-            var dynamicTemplateData = new
-            {
-                FirstName = firstName,
-                Email = email,
-                ResetURL = resetLink,
-                CurrentYear = DateTimeOffset.UtcNow.Year.ToString(),
-                Company = Company
-            };
-            theMessage.SetTemplateData(dynamicTemplateData);
-
-            var response = _sendGrid.SendEmailAsync(theMessage);
-
-            return response;
+            [JsonProperty("company")]
+            public string company { get; set; }
         }
 
-        //public Task SendWebError(string toEmailAddress, string user, string routeData, string exceptionMessage, string exceptionTrace)
-        //{
-        //    const string subject = "Error - Web Server";
+        private class WebsiteError
+        {
+            [JsonProperty("webaddress")]
+            public string webaddress { get; set; }
 
-        //    var theMessage = new SendMessageTemplateRequest(new EmailMessage
-        //    {
-        //        FromEmail = EmailFromAddress,
-        //        FromName = EmailFromName,
-        //        Subject = subject,
-        //        To = new List<Mandrill.Models.EmailAddress> { new EmailAddress(toEmailAddress) },
-        //        Merge = true
-        //    }, "web-error");
-        //    theMessage.Async = true;
+            [JsonProperty("useraffected")]
+            public string useraffected { get; set; }
 
-        //    theMessage.Message.AddGlobalVariable("web_address", ConfigurationManager.AppSettings["AppWebSite"]);
-        //    theMessage.Message.AddGlobalVariable("user_affected", user);
-        //    theMessage.Message.AddGlobalVariable("route_data", routeData);
-        //    theMessage.Message.AddGlobalVariable("datestamp", DateTimeOffset.UtcNow);
-        //    theMessage.Message.AddGlobalVariable("exception_message", exceptionMessage);
-        //    theMessage.Message.AddGlobalVariable("exception_trace", exceptionTrace);
-        //    theMessage.Message.AddGlobalVariable("current_year", DateTimeOffset.UtcNow.Year.ToString());
-        //    theMessage.Message.AddGlobalVariable("company", Company);
+            [JsonProperty("routedata")]
+            public string routedata { get; set; }
 
-        //    var task = _mandrill.SendMessageTemplate(theMessage);
+            [JsonProperty("datestamp")]
+            public string datestamp { get; set; }
 
-        //    return task;
-        //}
+            [JsonProperty("exceptionmessage")]
+            public string exceptionmessage { get; set; }
+
+            [JsonProperty("exceptiontrace")]
+            public string exceptiontrace { get; set; }
+        }
     }
 }
